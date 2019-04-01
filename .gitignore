@@ -9,6 +9,9 @@ target/
 .antlr/
 
 # Node
-node_module/
+node_modules/
 yarn.lock
 yarn-error.log
+
+# Build
+source/*
