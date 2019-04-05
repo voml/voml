@@ -62,3 +62,5 @@ Every symbol in ARC has only one effect.
 ### XML like
 
 **Forget them!**
+
+## License
