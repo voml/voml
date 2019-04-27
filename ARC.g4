@@ -3,37 +3,39 @@ grammar ARC;
 // $antlr-format columnLimit 128;
 // $antlr-format alignColons trailing;
 program   : statement* EOF;
-statement : (empty | record | dict_scope | list_scope);
+statement : (empty | recordEOS | dict_scope | list_scope);
 /*====================================================================================================================*/
 empty     : eos # EmptyStatement;
 eos       : Semicolon | Comma;
 Semicolon : ';';
+Comma     : ',';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
+recordEOS: record eos? # RecordStatement;
 record
-    : left = key Assign right = integer # IntegerAssign
-    | left = key Assign right = decimal # DecimalAssign
-    /*| left = key Assign right = exponent  # ExponentAssign*/
-    | left = key Assign right = specialID # SpecialLiteral
+    : left = key Assign right = integer   # IntegerAssign
+    | left = key Assign right = decimal   # DecimalAssign
+    | left = key Assign right = specialID # SpecialAssign
     | left = key Assign right = string    # StringAssign
     | left = key Assign right = list      # ListAssign
     | left = key Assign right = dict      # DictAssign
     | left = key Assign right = reference # CiteAssign
     | left = key Assign right = macro     # MacroAssign;
+/*  | left = key Assign right = exponent  # ExponentAssign*/
 // $antlr-format alignColons trailing;
-key    : symbol (Dot symbol)*;
-symbol : (Integer | string | Identifier);
-Assign : '=';
-Dot    : '.';
+key            : symbol ('/' symbol)*;
+symbol         : (Integer | string | Identifier);
+Assign         : Equal | Colon;
+Dot            : '.';
+fragment Equal : '=';
+fragment Colon : ':';
 /*====================================================================================================================*/
 /*Exponent Support 
  exponent : signed Exponent signed;
  signed : integer | decimal;
  Exponent : 'e' | 'E';
  */
-integer                 : Sign? Integer;
-decimal                 : Sign? point;
-point                   : Integer Dot Integer?;
+integer                 : Sign? Integer # IntegerLiteral;
 specialID               : Sign? Identifier;
 Identifier              : NameStartCharacter NameCharacter*;
 Integer                 : Digits (Underline Digits)*;
@@ -41,12 +43,15 @@ Underline               : '_';
 Sign                    : ('+' | '-');
 fragment Digit          : [0-9];
 fragment Digits         : Digit+;
-fragment OctalDigit     : [0-7];
+fragment OCT            : [0-7];
 fragment HEX            : [0-9a-fA-F];
 fragment Letter         : [a-zA-Z];
 fragment EmojiCharacter : [\p{Emoji}];
 fragment NameCharacter  : NameStartCharacter | Digit;
 // $antlr-format alignColons hanging;
+decimal
+    : Sign? left = Integer Dot right = Integer? # DecimalLiteral
+    | Sign? Dot right = Integer                 # DecimalZero;
 fragment NameStartCharacter
     : Underline
     | [\p{Latin}]
@@ -70,9 +75,10 @@ StringEscapeSingle  : '"' CharLevel2+? '"';
 StringLiteralBlock  : '\'\'\'' NonEscape '\'\'\'';
 StringLiteralSingle : '\'' ~[']+? '\'';
 NewLine             : ('\r'? '\n' | '\r')+ -> skip;
-fragment CharLevel1 : '\\' (["\\/0bfnrt] | UTF8) | ~[\\];
-fragment CharLevel2 : '\\' (["\\/0bfnrt] | UTF8) | ~["\\];
+fragment CharLevel1 : '\\' (["\\/0bfnrt] | UTF8 | UTF16) | ~[\\];
+fragment CharLevel2 : '\\' (["\\/0bfnrt] | UTF8 | UTF16) | ~["\\];
 fragment UTF8       : 'u' HEX HEX HEX HEX;
+fragment UTF16      : 'U' HEX HEX HEX HEX HEX HEX HEX HEX;
 fragment NonEscape  : ~[\u0001]+?;
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
@@ -84,24 +90,23 @@ macro
 reference   : '$' Identifier;
 MacroEscape : '`' ('\\' [`] | ~[`])+? '`';
 /*====================================================================================================================*/
-data  : (Integer | decimal | string | list | dict | reference | macro);
-list  : '(' ')' # EmptyList | '(' data (Comma data)* Comma? ')' # FilledList;
-dict  : '{' '}' # EmptyDict | '{' record (Comma record)* Comma? '}' # FilledDict;
-Comma : ',';
+data : (integer | decimal | specialID | string | list | dict | reference | macro);
+list : '[' ']' # EmptyList | '[' (data eos?)+ ']' # FilledList;
+dict : '{' '}' # EmptyDict | '{' recordEOS+ '}' # FilledDict;
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 dict_scope
-    : '[' header = key ']' record+ # FilledDictScope
-    | '[' header = key ']'         # EmptyDictScope;
+    : '(' header = key ')' recordEOS+ # FilledDictScope
+    | '(' header = key ')'            # EmptyDictScope;
 list_scope
     : '<' header = key '>' group+ # FilledListScope
     | '<' header = key '>'        # EmptyListScope;
-group: '*' record+ # DictGroup | '&' data # DataGroup;
+group: '*' recordEOS+ # DictGroup | '&' data # DataGroup;
 /*====================================================================================================================*/
 // $antlr-format alignColons trailing;
-Sharp                      : '%';
-Comment                    : '%%%';
 LineComment                : Sharp ~[\r\n]* -> channel(HIDDEN);
 PartComment                : Comment .*? Comment -> channel(HIDDEN);
 WhiteSpace                 : UnicodeWhiteSpace+ -> skip;
+fragment Sharp             : '%';
+fragment Comment           : '%%%';
 fragment UnicodeWhiteSpace : [\p{White_Space}];
