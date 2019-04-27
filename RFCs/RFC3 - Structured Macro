@@ -2,22 +2,31 @@ RFC3: Structured Macro
 ======================
 
 
-
+Macro 作为一等公民.
 
 
 ## Design
 
-```
-path/key = @macro`raw`
-```
 
-改为
+
+Macro 可以写在键上
 
 ```
 path/key@macro = `raw`
 ```
 
+效果等同
 
-域现在可以指定一个 macro 参数
+```
+path/key = @macro`raw`
+```
+
+
+域可以指定 macro 展开
 
 (path/scope@macro)
+
+<path/scope@macro>
+
+
+最终效果等同于展开完之后作用于整个结构.
