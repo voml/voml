@@ -1,2 +1,23 @@
 RFC3: Structured Macro
 ======================
+
+
+
+
+
+## Design
+
+```
+path/key = @macro`raw`
+```
+
+改为
+
+```
+path/key@macro = `raw`
+```
+
+
+域现在可以指定一个 macro 参数
+
+(path/scope@macro)
