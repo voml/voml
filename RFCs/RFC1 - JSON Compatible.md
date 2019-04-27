@@ -1,4 +1,4 @@
-RFC1: Json Compatible
+RFC1: JSON Compatible
 =====================
 
 - 提出时间: 2019-04-25
