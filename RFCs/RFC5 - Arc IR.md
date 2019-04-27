@@ -61,9 +61,9 @@ a = @some`value`
 ```js
 module.exports = [
     {
-        task: 'new',
+        task: 'macro',
         path: ['a'],
-        text: "some"
+        with: "some"
         data: "value",
     }
 ]
@@ -75,11 +75,13 @@ module.exports = [
 
 传入 `data: "value"`, 并删除自身.
 
-#### Safe 模式
+- Safe 模式
 
 默认情况下, 所有宏任务会先从 stack 移除并缓存执行.
 
-#### Unsafe 模式
+宏不可以访问别的宏的路径.
+
+- Unsafe 模式
 
 使用 `--unsafe` 参数之后, 宏不会被移除还是留在 stack 中.
 
