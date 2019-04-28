@@ -92,18 +92,22 @@ MacroEscape : '`' ('\\' [`] | ~[`])+? '`';
 /*====================================================================================================================*/
 data : (integer | decimal | specialID | string | list | dict | reference | macro);
 list : '[' ']' # EmptyList | '[' (data eos?)+ ']' # FilledList;
-dict : '{' '}' # EmptyDict | '{' recordEOS+ '}' # FilledDict;
-/*====================================================================================================================*/
 // $antlr-format alignColons hanging;
+dict
+    : '{' '}'            # EmptyDict
+    | '{' recordEOS+ '}' # FilledDict
+    | '{' scopes+ '}'    # NestedDict;
+/*====================================================================================================================*/
 dict_scope
     : '(' header = key ')' recordEOS+ # FilledDictScope
     | '(' header = key ')'            # EmptyDictScope;
 list_scope
     : '<' header = key '>' group+ # FilledListScope
     | '<' header = key '>'        # EmptyListScope;
-group: '*' recordEOS+ # DictGroup | '&' data # DataGroup;
-/*====================================================================================================================*/
 // $antlr-format alignColons trailing;
+scopes : (dict_scope | list_scope);
+group  : '*' recordEOS+ # DictGroup | '&' data # DataGroup;
+/*====================================================================================================================*/
 LineComment                : Sharp ~[\r\n]* -> channel(HIDDEN);
 PartComment                : Comment .*? Comment -> channel(HIDDEN);
 WhiteSpace                 : UnicodeWhiteSpace+ -> skip;
