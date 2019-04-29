@@ -1,6 +1,8 @@
 RFC5: Arc Intermediate Representation
 =====================================
 
+- 提出时间: 2019-04-20
+- 当前状态: 已采纳
 
 ## Motivation
 
