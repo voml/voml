@@ -16,11 +16,11 @@ int1 =+99
 int2 = 42
 int3 = 0
 int4 =-17
-int5 = 1_000
-int6 = 5_349_221
-int7 = 1_2_3_4_5     % VALID but discouraged
+int5 = 1___000
+int6 = 5_349_221_
+int7 = 1_2_3_4_5
 % fractional
-flt1 =+1.0
+flt1 = 0.
 flt2 =-0.0_2
 flt3 =+5_0.
 flt4 = 3.1415
@@ -37,7 +37,7 @@ sf6 =-NAN % valid, actual encoding is implementation specific
 
 
 (String)
-singleline = "I'm a string. \"You can quote me\". Name\tJos\u00E9\nLocation\tSF."
+singleline = "I'm a string."
 multiline = """
 \b     - backspace       (U+0008)
 \t     - tab             (U+0009)
