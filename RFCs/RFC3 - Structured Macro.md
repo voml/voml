@@ -17,13 +17,13 @@ Macro 作为一等公民.
 
 Macro 可以写在键上
 
-```
+```arc
 path/key@macro = `raw`
 ```
 
 效果等同于
 
-```
+```arc
 path/key = @macro`raw`
 ```
 
@@ -31,11 +31,19 @@ path/key = @macro`raw`
 
 域可以指定 macro 展开
 
+```arc
 (path/scope@macro)
 
 <path/scope@macro>
+```
 
 最终效果等同于展开完之后作用于整个结构.
 
 ## Rejected
 
+引入了额外的解析分支
+
+是否考虑更广义的key-attr
+
+
+ListScope 中作用于每个元素还是整个列表元素?
