@@ -54,6 +54,8 @@ ARC v0.5.0
 
 规定字典为有序字典
 
+- RFC9
+
 规定 key 不会发生覆盖, 不能重复定义
 
 
@@ -78,7 +80,7 @@ ARC v0.3.0
 
 ### JSON 兼容性
 
-- [#RFC-1](../../RFCs)
+- [#RFC-1](../../../RFCs/RFC1 - JSON Compatible.md)
 
 JSON 直接去掉首位 `{ }` 就能变成合法 ARC 文件.
 

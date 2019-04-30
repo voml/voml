@@ -36,3 +36,6 @@ path/key = @macro`raw`
 <path/scope@macro>
 
 最终效果等同于展开完之后作用于整个结构.
+
+## Rejected
+

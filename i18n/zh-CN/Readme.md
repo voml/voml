@@ -20,7 +20,7 @@ Table of Contents
 7. [特殊值](#standard-special-value)
 8. [引用值](#standard-reference-value)
 9. [宏](#standard-dict)
-- [Additional](../addition/Readme.md)
+- [Additional](./addition/Readme.md)
 
 [注释](#standard-comment)<a id="standard-comment">&nbsp;</a>
 ------------------------------------------------------------
