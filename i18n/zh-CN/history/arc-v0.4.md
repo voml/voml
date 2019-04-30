@@ -1,4 +1,4 @@
-ARC v0.2.0
+ARC v0.4.0
 ===========
 *Arc means Readable Configuration*
 
@@ -13,8 +13,10 @@ Table of Contents
 -----------------
 - [注释](#standard-comment)
 - [键值对](#user-content-keyvalue-pair)
-- [字符串](#standard-string)
-- [特殊值](#standard-special-value)
 - [十进制整数](#standard-integer)
 - [十进制小数](#standard-decimal)
-
+- [字符串](#standard-string)
+- [特殊值](#standard-special-value)
+- [引用值](#standard-reference-value)
+- [列表](#standard-list)
+- [字典](#standard-dict)

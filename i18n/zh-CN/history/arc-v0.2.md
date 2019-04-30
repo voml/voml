@@ -1,4 +1,4 @@
-ARC v0.1.0
+ARC v0.2.0
 ===========
 *Arc means Readable Configuration*
 
@@ -12,10 +12,10 @@ Purpose
 Table of Contents
 -----------------
 - [注释](#standard-comment)
-- [十进制整数](#standard-integer)
-- [字符串](#standard-string)
+- [列表](#standard-list)
+- [字典](#standard-dict)
 - [键值对](#user-content-keyvalue-pair)
-
+- [字符串](#standard-string)
 
 [注释](#standard-comment)<a id="standard-comment">&nbsp;</a>
 ------------------------------------------------------------
@@ -25,22 +25,10 @@ Table of Contents
 % 这是一个单行注释
 %%% 这是多行注释 %%%
 
-
-[键值对](#user-content-keyvalue-pair)<a id="user-content-keyvalue-pair">&nbsp;</a>
---------
-
-> ARC 被设计成可以无歧义地映射为哈希表
-
-因此 ARC 最基本的构成单元是键值对。
-
-键名在等号的左边而值在右边, 键名和键值周围的空白会被忽略。  
-
-[字符串](#standard-string)<a id="user-content-string">&nbsp;</a>
-``" "` 和 ``' '` 引起的部分是字符串.
-
 [十进制整数](#standard-integer)<a id="standard-integer">&nbsp;</a>
 -----------------------------------------------------------------
 
 - `十进制整数`有数字, 下划线以及加减号组成, 对应类型为大整数.
 - 负数的前缀是减号, 正数可以有加号前缀.
 - 整数值 `-0` 与 `+0` 是有效的, 并等同于无前缀的零。
+

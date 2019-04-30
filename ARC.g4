@@ -3,15 +3,9 @@ grammar ARC;
 // $antlr-format columnLimit 128;
 // $antlr-format alignColons trailing;
 program   : statement* EOF;
-statement : (empty | recordEOS | dict_scope | list_scope);
-/*====================================================================================================================*/
-empty     : eos # EmptyStatement;
-eos       : Semicolon | Comma;
-Semicolon : ';';
-Comma     : ',';
+statement : (recordEOS | dict_scope | list_scope);
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-recordEOS: record eos? # RecordStatement;
 record
     : left = key Assign right = integer   # IntegerAssign
     | left = key Assign right = decimal   # DecimalAssign
@@ -23,9 +17,13 @@ record
     | left = key Assign right = macro     # MacroAssign;
 /*  | left = key Assign right = exponent  # ExponentAssign*/
 // $antlr-format alignColons trailing;
-key            : symbol ('/' symbol)*;
+recordEOS      : record eos? # RecordStatement;
 symbol         : (Integer | string | Identifier);
+key            : symbol ('/' symbol)*;
+eos            : Semicolon | Comma;
 Assign         : Equal | Colon;
+Semicolon      : ';';
+Comma          : ',';
 Dot            : '.';
 fragment Equal : '=';
 fragment Colon : ':';
@@ -92,18 +90,22 @@ MacroEscape : '`' ('\\' [`] | ~[`])+? '`';
 /*====================================================================================================================*/
 data : (integer | decimal | specialID | string | list | dict | reference | macro);
 list : '[' ']' # EmptyList | '[' (data eos?)+ ']' # FilledList;
-dict : '{' '}' # EmptyDict | '{' recordEOS+ '}' # FilledDict;
-/*====================================================================================================================*/
 // $antlr-format alignColons hanging;
+dict
+    : '{' '}'            # EmptyDict
+    | '{' recordEOS+ '}' # FilledDict
+    | '{' scopes+ '}'    # NestedDict;
+/*====================================================================================================================*/
 dict_scope
     : '(' header = key ')' recordEOS+ # FilledDictScope
     | '(' header = key ')'            # EmptyDictScope;
 list_scope
     : '<' header = key '>' group+ # FilledListScope
     | '<' header = key '>'        # EmptyListScope;
-group: '*' recordEOS+ # DictGroup | '&' data # DataGroup;
-/*====================================================================================================================*/
 // $antlr-format alignColons trailing;
+scopes : (dict_scope | list_scope);
+group  : '*' recordEOS+ # DictGroup | '&' data # DataGroup;
+/*====================================================================================================================*/
 LineComment                : Sharp ~[\r\n]* -> channel(HIDDEN);
 PartComment                : Comment .*? Comment -> channel(HIDDEN);
 WhiteSpace                 : UnicodeWhiteSpace+ -> skip;
