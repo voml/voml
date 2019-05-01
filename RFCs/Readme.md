@@ -1,5 +1,5 @@
-Request For Comments
-====================
+Arc's Request for Comments
+==========================
 
 ## States
 
@@ -13,16 +13,19 @@ Request For Comments
 
 ## RFCs List
 
-| RFCs  | Name                                            | Type        | State |
-| :---- | :---------------------------------------------- | :---------- | :---- |
-| 1     | JSON Compatible                                 | Lexical     | ✔️    |
-| 2     | Nested Dict Scope                               | Lexical     | ✔️    |
-| 3     | Structured Macro                                | Lexical     | ❌     |
-| 4     | Expanding Order                                 | Backend     | ❔     |
-| 5     | Arc Intermediate Representation                 | Backend     | ❔     |
-| 6     | Empty Statement                                 | Lexical     | ✔️    |
-| 7     | Resolve Options for Arc                         | Standard    | ➕     |
-| 8     | Style Guide for Arc                             | Standard    | ➕     |
-| 9     | Root Scope                                      | Optional    | ❌     |
-| 10    | Default Export                                  | Optional    | ❕     |
-| 65535 | ----------------------------------------------- | ----------- |       |
+| RFCs  | Name                                            | Type      | State |
+| :---- | :---------------------------------------------- | :-------- | :---: |
+| 1     | JSON Compatible                                 |           |  ✔️   |
+| 2     | Dict Nested Scope                               |           |  ✔️   |
+| 3     | Structured Macro                                |           |   ❌   |
+| 4     | Expanding Order                                 |           |       |
+| 5     | Arc Intermediate Representation                 |           |       |
+| 6     | Empty Statement                                 |           |  ✔️   |
+| 7     | Resolve Options for Arc                         | Standards |   ➕   |
+| 8     | Style Guide for Arc                             | Standards |   ➕   |
+| 9     | Default Export                                  | Optional  |   ❕   |
+| 10    | Root Scope                                      |           |   ❌   |
+| 11    | Binding Macro                                   |           |       |
+| 12    | Shadow Path                                     |           |       |
+| 13    | Inherit Path                                    |           |       |
+| 65535 | ----------------------------------------------- |           |       |
