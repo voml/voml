@@ -67,7 +67,7 @@ ARC v0.4.0
 
 定义引用值
 
-- RFC6
+- #RFC6: Empty Statement
 
 移除空语义, 分隔符 `;` 与 `,` 不能连续使用.
 
@@ -80,7 +80,7 @@ ARC v0.3.0
 
 ### JSON 兼容性
 
-- [#RFC-1](../../../RFCs/RFC1 - JSON Compatible.md)
+- #RFC1: JSON Compatible
 
 JSON 直接去掉首位 `{ }` 就能变成合法 ARC 文件.
 
