@@ -15,7 +15,6 @@ record
     | left = key Assign right = dict      # DictAssign
     | left = key Assign right = reference # CiteAssign
     | left = key Assign right = macro     # MacroAssign;
-/*  | left = key Assign right = exponent  # ExponentAssign*/
 // $antlr-format alignColons trailing;
 recordEOS      : record eos? # RecordStatement;
 symbol         : (Integer | string | Identifier);
@@ -28,11 +27,6 @@ Dot            : '.';
 fragment Equal : '=';
 fragment Colon : ':';
 /*====================================================================================================================*/
-/*Exponent Support 
- exponent : signed Exponent signed;
- signed : integer | decimal;
- Exponent : 'e' | 'E';
- */
 integer                 : Sign? Integer # IntegerLiteral;
 specialID               : Sign? Identifier;
 Identifier              : NameStartCharacter NameCharacter*;
