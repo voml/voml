@@ -319,7 +319,7 @@ It seems that it can be written as:
     filenames = [ ],
     mimetypes = ['text/x-arc'],
     configuration = './syntax/arc.configuration.json',
- }
+  }
 ```
 
 But there is a better way to write, here the dictionary expansion mark `*` can be omitted.
