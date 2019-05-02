@@ -90,7 +90,7 @@ Then you can replace the json style `:` with `=`
 
 Then remove all the `,` at the end of the key-value pair, unless it is a multi-line list or dictionary, each line is separated by `,` at the end.
 
-The IDE can automatically format it for you, you can use `self-lint` to control formatting.
+The IDE can automatically format file for you, you can use `self-lint` to control formatting.
 
 ```arc
 name = 'vscode-arc'
@@ -196,11 +196,11 @@ categories = [
 ]
 ```
 
-域表示到域切换或者文件结束为止全部挂载在这个键上
+The scope indicates that all keys are mounted on this key until the scope switch or file ends.
 
-字典域用 `( )` 表示, 列表域用 `[ ]` 表示.
+The dictionary field is represented by `( )`, and the list field is represented by `[ ]`.
 
-等价的写法为如下:
+The equivalent is written as follows:
 
 ```arc
 (repository)
@@ -211,7 +211,7 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 & 'Formatters'
 ```
 
-列表域使用 `&` 表示插入一个值, `*`表示插入多个键构成字典.
+The list field uses `&` to insert a value, and `*` to insert multiple keys to form a dictionary.
 
 ```arc
 <dependence>
@@ -223,7 +223,7 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 & null
 ```
 
-等价于
+which is quivalent to
 
 ```ts
 module.exports = [
@@ -243,7 +243,7 @@ module.exports = [
 ]
 ```
 
-很少有场景需要混写 `*` 和 `&`.
+Few scenes need to use `*` and `&` both.
 
 ---
 
