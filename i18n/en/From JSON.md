@@ -155,13 +155,13 @@ __metadata = {
 
 ---
 
-接着我们要引入路由的概念, 这能大大简化输入
+Then we have to introduce the concept of routing, which greatly simplifies the input.
 
-路由用 `/` 分割, 就像文件路径一样.
+The route is split with `/`, just like the file path.
 
-这也是为什么 key 出现 `/` 必须用字符串模式的原因.
+This is the reason why the key contain `/` must be in string mode.
 
-至于为什么纯数字也要字符串, 具体原因下一节会揭示.
+For why numbers also must use strings, the specific reasons will be revealed in the next section.
 
 ```arc
 engines = {
@@ -169,19 +169,21 @@ engines = {
 }
 ```
 
-等价于 
+which is quivalent to:
 
 ```arc
 engines/vscode = '^1.8.0'
 ```
 
-编程语言中 namespace 通常用 `::` 或者 `.` 分隔. 
+The namespace in a programming language is usually separated by `::` or `.`.
 
-`arc` 不用 `.` 的原因在于这符号个已经用于分割小数了, `arc` 为了方便解析一个符号只做一件事.
+The reason why `arc` does not use `.` is that this symbol has been used to split decimals. 
+
+In `arc` one symbol only one meaning, whick is convenient for parsing.
 
 ---
 
-每个路由都要展开太过烦琐了, 接下来引入域的概念
+Every route has to be too cumbersome to expand, and then we introduce the concept of the scope.
 
 ```arc
 repository = {
