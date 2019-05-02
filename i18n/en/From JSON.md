@@ -80,17 +80,17 @@ Now the file already a valid `arc` file, but it doesn't look pretty.
 
 ---
 
-接着你可以遵循 `arc` 的最佳实践, 获取更好的阅读效果
+Then you can follow the best practices of `arc` for better readability.
 
-你可以把所有键的引号去掉, 除非他们包含 `/` 字符
+You can remove the quotation marks of all keys, unless they contain `/` characters, or consist of pure numbers.
 
-右边单引号是最佳实践, 但是双引号也可以, 两者区别参考
+Single quotes are best practices, but double quotes are also available, single quotes do not escaped, while double quotes support escape.
 
-然后你可以把 json 风格的 ` =` 换成 `=`
+Then you can replace the json style `:` with `=`
 
-然后去掉键值对末尾的所有 `,`, 除非是多行列表或者字典, 每行末尾使用 `,` 分隔
+Then remove all the `,` at the end of the key-value pair, unless it is a multi-line list or dictionary, each line is separated by `,` at the end.
 
-IDE 能自动为你格式化, 你可以使用 `self-lint` 控制格式化
+The IDE can automatically format it for you, you can use `self-lint` to control formatting.
 
 ```arc
 name = 'vscode-arc'
