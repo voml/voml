@@ -6,7 +6,7 @@ Arc Readable Configuration
 
 ## How to Start
 
-Just copy json file, then remove `{ }` pair.
+Just copy json file, then remove `{ }` pair, following [json migration tutorial](https://github.com/Moe-Net/Arc-Language/blob/master/i18n/en/From%20JSON.md).
 
 Try js parser: [Arc - Hive](https://github.com/GalAster/Arc-Hive)
 

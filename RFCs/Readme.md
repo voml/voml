@@ -28,4 +28,7 @@ Arc's Request for Comments
 | 11    | Binding Macro                                   |           |       |
 | 12    | Shadow Path                                     |           |       |
 | 13    | Inherit Path                                    |           |       |
+| 14    | Exponent                                        |
+| 15    | Multiline String                                | Standards |  ✔️   |
+| 16    | Character Escaping                              |           |   ❔   |
 | 65535 | ----------------------------------------------- |           |       |
