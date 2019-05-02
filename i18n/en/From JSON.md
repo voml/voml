@@ -396,10 +396,10 @@ publisherDisplayName = 'Aster'
 publisherId = '3406b78c-f287-4619-8d82-7c97998693e3'
 ```
 
-注意所有的非字符空格换行都可以去掉, 进一步压缩传输.
+Note that all non-character space wraps can be removed, further compressed transmission.
 
-`arc` 语言的主要要点就全部在这了
+The main elements of the `arc` language are all here.
 
-还有一个引用特性, 就是使用 `$` 标记路径, 共享版本号之类的值.
+There is also a reference feature that uses `$` to mark paths, share values like version numbers.
 
-接下去就是熟悉宏的使用, 如何结合语言的反射特性, 得到可读的序列化结果
+The next step is to familiarize with the using of macros, how to combine the reflection properties of the language, and obtain readable serialization results.
