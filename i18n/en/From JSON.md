@@ -247,9 +247,9 @@ Few scenes need to use `*` and `&` both.
 
 ---
 
-我们接着考虑如何改写那个很大的 `contributes` 字段
+Then we consider how to rewrite that complex `contributes` field
 
-先介绍域继承, 考虑如下构造
+We introduce the scope inheritance, consider the following structure
 
 ```arc
 root = {
@@ -258,7 +258,7 @@ root = {
 }
 ```
 
-你可以写成 
+You can write as: 
 
 ```arc
 root = {
@@ -267,7 +267,7 @@ root = {
 }
 ```
 
-也可以写成
+or write as: 
 
 ```arc
 (root)
@@ -283,9 +283,9 @@ How to typeset is your freedom.
 
 ---
 
-接着我们了解一下什么是索引路由.
+Then let's take a look at what is index routing.
 
-回到这个结构
+Back to this structure:
 
 ```arc
 contributes = {
@@ -302,7 +302,7 @@ contributes = {
 }
 ```
 
-看起来似乎可以写成 
+It seems that it can be written as:
 
 ```arc
 <contributes/languages>
@@ -312,7 +312,7 @@ contributes = {
   filenames = [ ],
   mimetypes = ['text/x-arc'],
   configuration = './syntax/arc.configuration.json',
-& {  %或者手动展开
+& { % or manually expand
     id = 'arc',
     aliases = ['ARC'],
     extensions = ['.arc'],
@@ -322,9 +322,11 @@ contributes = {
  }
 ```
 
-但还有更好的写法, 这里这个字典展开标记 `*` 可以省略
+But there is a better way to write, here the dictionary expansion mark `*` can be omitted.
 
-因为是列表中第一个元素, 所以用 1 表示即可, 此处是字典, 所以用 `( )`.
+Because it is the first element in the list, it can be represented by 1. 
+
+then it is a dictionary, so use `( )`.
 
 ```arc
 (contributes/languages/1)
