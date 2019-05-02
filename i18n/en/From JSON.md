@@ -273,9 +273,11 @@ root = {
   (/b) d = false
 ```
 
-这取决于你喜不喜欢大括号, 这里的缩进都不是必须的.
+It depends on whether you like braces or not, and the indentation here is not necessary.
 
-`arc` 中空格, 缩进, 换行没有任何的实际意义如何排版是你的自由.
+Space, indentation, line breaks in `arc` don't have any practical meaning. 
+
+How to typeset is your freedom.
 
 ---
 
@@ -334,7 +336,7 @@ configuration = './syntax/arc.configuration.json'
 
 ---
 
-最终改写的文件如下:
+The final rewritten file is as follows:
 
 ```arc
 % https://github.com/GalAster/vscode-arc/blob/master/package.json
