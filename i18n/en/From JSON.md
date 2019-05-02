@@ -80,17 +80,17 @@ Now the file already a valid `arc` file, but it doesn't look pretty.
 
 ---
 
-接着你可以遵循 `arc` 的最佳实践, 获取更好的阅读效果
+Then you can follow the best practices of `arc` for better readability.
 
-你可以把所有键的引号去掉, 除非他们包含 `/` 字符
+You can remove the quotation marks of all keys, unless they contain `/` characters, or consist of pure numbers.
 
-右边单引号是最佳实践, 但是双引号也可以, 两者区别参考
+Single quotes are best practices, but double quotes are also available, single quotes do not escaped, while double quotes support escape.
 
-然后你可以把 json 风格的 ` =` 换成 `=`
+Then you can replace the json style `:` with `=`
 
-然后去掉键值对末尾的所有 `,`, 除非是多行列表或者字典, 每行末尾使用 `,` 分隔
+Then remove all the `,` at the end of the key-value pair, unless it is a multi-line list or dictionary, each line is separated by `,` at the end.
 
-IDE 能自动为你格式化, 你可以使用 `self-lint` 控制格式化
+The IDE can automatically format file for you, you can use `self-lint` to control formatting.
 
 ```arc
 name = 'vscode-arc'
@@ -155,13 +155,13 @@ __metadata = {
 
 ---
 
-接着我们要引入路由的概念, 这能大大简化输入
+Then we have to introduce the concept of routing, which greatly simplifies the input.
 
-路由用 `/` 分割, 就像文件路径一样.
+The route is split with `/`, just like the file path.
 
-这也是为什么 key 出现 `/` 必须用字符串模式的原因.
+This is the reason why the key contain `/` must be in string mode.
 
-至于为什么纯数字也要字符串, 具体原因下一节会揭示.
+For why numbers also must use strings, the specific reasons will be revealed in the next section.
 
 ```arc
 engines = {
@@ -169,19 +169,21 @@ engines = {
 }
 ```
 
-等价于 
+which is quivalent to:
 
 ```arc
 engines/vscode = '^1.8.0'
 ```
 
-编程语言中 namespace 通常用 `::` 或者 `.` 分隔. 
+The namespace in a programming language is usually separated by `::` or `.`.
 
-`arc` 不用 `.` 的原因在于这符号个已经用于分割小数了, `arc` 为了方便解析一个符号只做一件事.
+The reason why `arc` does not use `.` is that this symbol has been used to split decimals. 
+
+In `arc` one symbol only one meaning, whick is convenient for parsing.
 
 ---
 
-每个路由都要展开太过烦琐了, 接下来引入域的概念
+Every route has to be too cumbersome to expand, and then we introduce the concept of the scope.
 
 ```arc
 repository = {
@@ -194,11 +196,11 @@ categories = [
 ]
 ```
 
-域表示到域切换或者文件结束为止全部挂载在这个键上
+The scope indicates that all keys are mounted on this key until the scope switch or file ends.
 
-字典域用 `( )` 表示, 列表域用 `[ ]` 表示.
+The dictionary field is represented by `( )`, and the list field is represented by `[ ]`.
 
-等价的写法为如下:
+The equivalent is written as follows:
 
 ```arc
 (repository)
@@ -209,7 +211,7 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 & 'Formatters'
 ```
 
-列表域使用 `&` 表示插入一个值, `*`表示插入多个键构成字典.
+The list field uses `&` to insert a value, and `*` to insert multiple keys to form a dictionary.
 
 ```arc
 <dependence>
@@ -221,7 +223,7 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 & null
 ```
 
-等价于
+which is quivalent to
 
 ```ts
 module.exports = [
@@ -241,13 +243,13 @@ module.exports = [
 ]
 ```
 
-很少有场景需要混写 `*` 和 `&`.
+Few scenes need to use `*` and `&` both.
 
 ---
 
-我们接着考虑如何改写那个很大的 `contributes` 字段
+Then we consider how to rewrite that complex `contributes` field
 
-先介绍域继承, 考虑如下构造
+We introduce the scope inheritance, consider the following structure
 
 ```arc
 root = {
@@ -256,7 +258,7 @@ root = {
 }
 ```
 
-你可以写成 
+You can write as: 
 
 ```arc
 root = {
@@ -265,7 +267,7 @@ root = {
 }
 ```
 
-也可以写成
+or write as: 
 
 ```arc
 (root)
@@ -273,15 +275,17 @@ root = {
   (/b) d = false
 ```
 
-这取决于你喜不喜欢大括号, 这里的缩进都不是必须的.
+It depends on whether you like braces or not, and the indentation here is not necessary.
 
-`arc` 中空格, 缩进, 换行没有任何的实际意义如何排版是你的自由.
+Space, indentation, line breaks in `arc` don't have any practical meaning. 
+
+How to typeset is your freedom.
 
 ---
 
-接着我们了解一下什么是索引路由.
+Then let's take a look at what is index routing.
 
-回到这个结构
+Back to this structure:
 
 ```arc
 contributes = {
@@ -298,7 +302,7 @@ contributes = {
 }
 ```
 
-看起来似乎可以写成 
+It seems that it can be written as:
 
 ```arc
 <contributes/languages>
@@ -308,7 +312,7 @@ contributes = {
   filenames = [ ],
   mimetypes = ['text/x-arc'],
   configuration = './syntax/arc.configuration.json',
-& {  %或者手动展开
+& { % or manually expand
     id = 'arc',
     aliases = ['ARC'],
     extensions = ['.arc'],
@@ -318,9 +322,11 @@ contributes = {
  }
 ```
 
-但还有更好的写法, 这里这个字典展开标记 `*` 可以省略
+But there is a better way to write, here the dictionary expansion mark `*` can be omitted.
 
-因为是列表中第一个元素, 所以用 1 表示即可, 此处是字典, 所以用 `( )`.
+Because it is the first element in the list, it can be represented by 1. 
+
+then it is a dictionary, so use `( )`.
 
 ```arc
 (contributes/languages/1)
@@ -334,7 +340,7 @@ configuration = './syntax/arc.configuration.json'
 
 ---
 
-最终改写的文件如下:
+The final rewritten file is as follows:
 
 ```arc
 % https://github.com/GalAster/vscode-arc/blob/master/package.json
@@ -390,10 +396,10 @@ publisherDisplayName = 'Aster'
 publisherId = '3406b78c-f287-4619-8d82-7c97998693e3'
 ```
 
-注意所有的非字符空格换行都可以去掉, 进一步压缩传输.
+Note that all non-character space wraps can be removed, further compressed transmission.
 
-`arc` 语言的主要要点就全部在这了
+The main elements of the `arc` language are all here.
 
-还有一个引用特性, 就是使用 `$` 标记路径, 共享版本号之类的值.
+There is also a reference feature that uses `$` to mark paths, share values like version numbers.
 
-接下去就是熟悉宏的使用, 如何结合语言的反射特性, 得到可读的序列化结果
+The next step is to familiarize with the using of macros, how to combine the reflection properties of the language, and obtain readable serialization results.
