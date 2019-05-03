@@ -13,6 +13,7 @@ RFC8: Style Guide for Arc
 | :--------------- | :--------------------- | :------ | :------------------------- |
 | `@scope-line`    | integer                | 2       | Scope 之间间隔的空行数     |
 | `@indent-space`  | integer                | 4       | 缩进使用的空格数           |
+| `@list-space`    | integer                | 1       | 单行元素分割符后的空格数   |
 | `@align-comment` | boolean                | true    | 是否对齐单行注释           |
 | `@align-macro`   | boolean                | false   | 是否对齐宏                 |
 | `@align-assign`  | boolean                | false   | 是否对齐绑定               |
@@ -29,11 +30,11 @@ RFC8: Style Guide for Arc
 
 ### record-eos
 
-### list-eos
+### list-eos/dict-eos
 
 
 
-### list-end
+### list-end/dict-end
 
 开启时, 分行情况下, 最后一个元素会加上 EOS
 
