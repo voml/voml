@@ -1,12 +1,16 @@
 Arc Readable Configuration
 ==========================
-[![Site](https://img.shields.io/badge/ARC-v0.1-%23FF4D5B.svg?style=flat-square)](https://github.com/toml-lang/toml)
+[![Site](https://img.shields.io/badge/ARC-v0.4-%23FF4D5B.svg?style=flat-square)](https://github.com/toml-lang/toml)
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![LICENSE](https://img.shields.io/badge/license-MPL%202.0-blue.svg?style=flat-square)](https://github.com/GalAster/vscode-toml/blob/master/License.md)
 
 ## How to Start
 
-Just copy json file, then remove `{ }` pair.
+Just copy json file, then remove `{ }` pair, following [json migration tutorial](https://github.com/Moe-Net/Arc-Language/blob/master/i18n/en/From%20JSON.md).
+
+Try js parser: [Arc - Hive](https://github.com/GalAster/Arc-Hive)
+
+Try vscode support: [VScode - ARC](https://github.com/GalAster/vscode-arc/tree/master)
 
 ## DataType
 | Type     | Example             | Remark           |
@@ -17,7 +21,6 @@ Just copy json file, then remove `{ }` pair.
 | Cite     | `$cite/path`        | Atom             |
 | Special  | `true`, `null`      | Atom             |
 | Macro    | `` @macro`apply` `` | Macro            |
-| Record   | `a : 1 `            | Container        |
 | List     | `[1, 2, 3]`         | Container        |
 | Dict     | `{1: 3}`            | Container        |
 | ListMark | `<list/path>`       | Scope            |
@@ -66,3 +69,4 @@ Every symbol in ARC has only one effect.
 **Forget them!**
 
 ## License
+**Prohibit use during overtime!**
