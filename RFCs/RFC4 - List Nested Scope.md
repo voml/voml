@@ -1,4 +1,4 @@
-RFC2 - Dict Nested Scope
+RFC4 - List Nested Scope
 ========================
 
 - 提出时间: 2019-04-20

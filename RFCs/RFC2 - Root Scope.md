@@ -1,4 +1,4 @@
-RFC10: Root Scope
+RFC2: Root Scope
 ================
 
 ## Motivation
