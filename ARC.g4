@@ -7,11 +7,11 @@ statement : (empty | record | dict_scope | list_scope);
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 record
-    : left = key Assign right = atom      # AtomAssign
-    | left = key Assign right = list      # ListAssign
-    | left = key Assign right = dict      # DictAssign
-    | left = key Assign right = reference # CiteAssign
-    | left = key Assign right = macro     # MacroAssign;
+    : left = key Assign right = atom  # AtomAssign
+    | left = key Assign right = list  # ListAssign
+    | left = key Assign right = dict  # DictAssign
+    | left = key Assign right = cite  # CiteAssign
+    | left = key Assign right = macro # MacroAssign;
 // $antlr-format alignColons trailing;
 empty          : eos # EmptyStatement;
 symbol         : (Integer | string | Identifier);
@@ -77,18 +77,18 @@ macro
     | '@' apply = Identifier MacroEscape                # SimpleMacro
     | '@' apply = Identifier '`' '`'                    # EmptyMacro;
 // $antlr-format alignColons trailing;
-reference   : '$' Identifier;
+cite        : '$' key;
 MacroEscape : '`' ('\\' [`] | ~[`])+? '`';
 /*====================================================================================================================*/
-data : (integer | decimal | specialID | string | list | dict | reference | macro);
-list : '[' (data eos?)* ']' # ListStatement;
-dict : '{' statement* '}' # DictStatement;
+data : (integer | decimal | specialID | string | list | dict | cite | macro);
+list : '[' empty* ']' # ListEmpty | '[' (data eos?)* ']' # ListStatement;
+dict : '{' empty* '}' # DictEmpty | '{' statement* '}' # DictStatement;
 /*====================================================================================================================*/
 dict_scope   : '(' header = key ')' (record | dict_inherit | list_inherit empty*)* # DictScope;
 dict_inherit : '(' '/' header = key ')' (record | dict_inherit | list_inherit empty*)+ # DictInherit;
 list_scope   : '<' header = key '>' (group empty*)+ # ListScope;
 list_inherit : '<' '/' header = key '>' (group empty*)+ # ListInherit;
-group        : '*' (record empty*)+ # DictGroup | '&' data # DataGroup;
+group        : '*' (record empty*)+ # DictGroup | '&'? data+ # DataGroup ;
 /*====================================================================================================================*/
 LineComment                : Sharp ~[\r\n]* -> channel(HIDDEN);
 PartComment                : Comment .*? Comment -> channel(HIDDEN);
