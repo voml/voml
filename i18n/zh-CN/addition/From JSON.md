@@ -310,7 +310,7 @@ contributes = {
   filenames = [ ],
   mimetypes = ['text/x-arc'],
   configuration = './syntax/arc.configuration.json',
-& {  %或者手动展开
+& { %或者手动展开
     id = 'arc',
     aliases = ['ARC'],
     extensions = ['.arc'],
@@ -365,23 +365,23 @@ vscode = '^1.1.33'
 (devDependencies)
 '@types/node' = '^11.13.6'
 
-(contributes/languages/1)
-id = 'arc'
-aliases = ['ARC'],
-extensions = ['.arc']
-filenames = [ ]
-mimetypes = ['text/x-arc']
-configuration = './syntax/arc.configuration.json'
-
-<contributes/grammars>
+(contributes)
+</languages>
+* id = 'arc'
+  aliases = ['ARC'],
+  extensions = ['.arc']
+  filenames = []
+  mimetypes = ['text/x-arc']
+  configuration = './syntax/arc.configuration.json'
+</grammars>
 * language = 'arc'
   scopeName = 'source.arc'
   path = './syntax/arc.tmLanguage.json'
-* scopeName = 'markdown.arc.codeblock',
-  path = './syntax/arc.markdown.json',
+* scopeName = 'markdown.arc.codeblock'
+  path = './syntax/arc.markdown.json'
   injectTo = [
     'text.html.markdown',
-  ],
+  ]
   embeddedLanguages = {
     'meta.embedded.block.arc' = 'arc',
   }
