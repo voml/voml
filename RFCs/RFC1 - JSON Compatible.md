@@ -10,9 +10,9 @@ JSON 是一种广泛采用的数据格式, 如果能几乎不加改动的使用�
 
 ARC 必须被解析为 Hashmap, 所以最小化改动就是去掉首尾的 `{ }`.
 
-## Reference
+## Related
 
-None
+- [#RFC6](./RFC6%20-%20Default%20Export.md): 允许使用 `--default` 参数直接导入 `json` 文法.
 
 ## Design
 
@@ -30,4 +30,4 @@ None
 
 List 的文法由 `( )` 改为 `[ ]`.
 
-相应的 ListScope 从 `[ ]` 改为 `( )`.
+相应的 List Scope 从 `[ ]` 改为 `( )`.
