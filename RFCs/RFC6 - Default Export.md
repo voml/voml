@@ -1,2 +1,2 @@
-RFC9: Default Export
+RFC6: Default Export
 ====================

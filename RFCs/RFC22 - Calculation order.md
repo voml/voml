@@ -1,5 +1,5 @@
-RFC4: Expanding Order
-=====================
+RFC4: Calculation order
+=======================
 
 
 
