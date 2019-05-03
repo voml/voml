@@ -21,7 +21,6 @@ Try vscode support: [VScode - ARC](https://github.com/GalAster/vscode-arc/tree/m
 | Cite     | `$cite/path`        | Atom             |
 | Special  | `true`, `null`      | Atom             |
 | Macro    | `` @macro`apply` `` | Macro            |
-| Record   | `a : 1 `            | Container        |
 | List     | `[1, 2, 3]`         | Container        |
 | Dict     | `{1: 3}`            | Container        |
 | ListMark | `<list/path>`       | Scope            |
