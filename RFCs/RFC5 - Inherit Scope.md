@@ -1,5 +1,5 @@
-RFC13: Inherit Scope
-====================
+RFC5: Inherit Scope
+===================
 
 
 ## Motivation
