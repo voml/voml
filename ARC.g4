@@ -3,7 +3,7 @@ grammar ARC;
 // $antlr-format columnLimit 160;
 // $antlr-format alignColons trailing;
 program   : statement* EOF;
-statement : (empty | record | dict_scope | list_scope );
+statement : (empty | record | dict_scope | list_scope);
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 record
@@ -88,7 +88,7 @@ dict_scope   : '(' header = key ')' (record | dict_inherit | list_inherit empty*
 dict_inherit : '(' '/' header = key ')' (record | dict_inherit | list_inherit empty*)+ # DictInherit;
 list_scope   : '<' header = key '>' (group empty*)+ # ListScope;
 list_inherit : '<' '/' header = key '>' (group empty*)+ # ListInherit;
-group        : '*' (record empty*)+ # DictGroup | '&' data # DataGroup;
+group        : '*' (record empty*)+ # DictGroup | '&'? data+ # DataGroup ;
 /*====================================================================================================================*/
 LineComment                : Sharp ~[\r\n]* -> channel(HIDDEN);
 PartComment                : Comment .*? Comment -> channel(HIDDEN);
