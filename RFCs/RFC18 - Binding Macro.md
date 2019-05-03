@@ -1,4 +1,4 @@
-RFC11: Binding Macro
+RFC17: Binding Macro
 ====================
 
 ## Motivation
