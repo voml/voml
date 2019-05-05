@@ -2,7 +2,7 @@
     "name": "@nyar/arc-antlr",
     "displayName": "Arc Language ANTLR Parser",
     "description": "Arc Readable Configuration Parser ANTLR Definition",
-    "version": "1.0.16",
+    "version": "1.0.25",
     "main": "source/index.ts",
     "license": "MPL-2.0",
     "scripts": {
