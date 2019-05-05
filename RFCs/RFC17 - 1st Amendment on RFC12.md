@@ -1,7 +1,7 @@
 RFC17: Multiple Parameters Macro
 ================================
 
-- 1st Amendment on [#RFC12][#12]
+- [1st Amendment on RFC12][#12]
 - 提出时间: 2019-05-05
 - 当前状态: 已采纳
 
@@ -38,3 +38,5 @@ json = @data['json', '''
 ```antlr
 macro: At apply = Identifier value = list   # MultipleMacro;
 ```
+
+[#12]: ./RFC12%20-%20Standardize%20Macro.md

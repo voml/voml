@@ -31,9 +31,9 @@ Arc's Request for Comments
 | 14    | [Exponent][#14]                        |       | 推迟             |
 | 15    | [Character Escape][#15]                |       | ❔ Stage-1        |
 | 16    | [Multiline String][#16]                |       | ❔ Stage-1        |
-| 17    | [Multiple Parameters Macro][#17]       |   ❌   |                  |
-| 18    | [Binding Macro][#18]                   |       | ❔ Stage-1        |
-| 19    | [Structured Macro][#19]                |       | ❔ Stage-1        |
+| 17    | [Multiple Parameters Macro][#17]       |  ✔️️  |                  |
+| 18    | [Binding Macro][#18]                   |  ✔️️  | ❔ Stage-1        |
+| 19    | [Structured Macro][#19]                |  ✔️️  | ❔ Stage-1        |
 | 20    | [Shadow Path][#20]                     |  ✔️️  |                  |
 | 21    | [Arc Intermediate Representation][#21] |   ❕   | 语义无关         |
 | 22    | [Calculation Order][#22]               |   ❕   | 语义无关         |
