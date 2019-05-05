@@ -28,12 +28,12 @@ json = @data['json', '''
 类似 markdown 的嵌入格式.
 
 ```md
-```json
+``​`json
 [true, false, null]
 ``​`
 ```
 
-
+词法改进:
 
 ```antlr
 macro: At apply = Identifier value = list   # MultipleMacro;
