@@ -1,7 +1,13 @@
-RFC17: Binding Macro
+RFC18: Binding Macro
 ====================
 
 ## Motivation
+
+但是由于可能的歧义, 不进一步将宏扩展至字符串和列表以外的情况.
+
+
+
+## Design
 
 
 由于不同的语言允许的特殊符号不同, 为了兼容考虑宏的模式只能由英文字母组成 `[@][a-zA-Z]+`
@@ -13,11 +19,6 @@ RFC17: Binding Macro
 - 数据类型: `[@][a-z][a-zA-Z]*`.
 - 数据容器: `[@][A-Z][a-zA-Z]*`.
 
-## Reference
-
-[#RFC3: Structured Macro](./RFC3%20-%20Structured%20Macro.md)
-
-## Design
 
 ```arc
 key@macro = 'raw-value'
@@ -36,9 +37,11 @@ key@Set   = [1, 2, 3]
 
 允许 
 
+### Sub-Resolution A
 
+是否要使用不同的符号?
 
-考虑不同的符号
+考虑如下不同的符号
 
 ```text
 key~Set = [1, 2, 3]

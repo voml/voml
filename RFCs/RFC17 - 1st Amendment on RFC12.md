@@ -21,9 +21,15 @@ macro
     | At apply = Identifier value = list   # MultipleMacro;
 ```
 
-兼容性:
 
-@i[2e7]
+
+
+
+## Compatibility:
+
+旧写法 `` @macro`raw_text` `` 被废弃.
+
+考虑如下可能歧义, 均能正确解析:
 
 ```arc
 (t1)
