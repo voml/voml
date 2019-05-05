@@ -76,17 +76,19 @@ fragment NonEscape  : ~[\u0001]+?;
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 macro
-    : At apply = Identifier value = StringLiteralBlock # LiteralMacro
-    | At apply = Identifier MacroEscape                # SimpleMacro
-    | At apply = Identifier '`' '`'                    # EmptyMacro;
+    : At apply = Identifier StringEmpty?   # EmptyMacro
+    | At apply = Identifier '[' empty* ']' # EmptyMacro
+    | At apply = Identifier value = string # SimpleMacro
+    | At apply = Identifier value = list   # MultipleMacro;
+cite
+    : Reference path = key                 # SimpleCite
+    | Reference path = key over = dict     # OverCite
+    | Reference path = key '+' over = dict # AddCite
+    | Reference path = key '-' over = dict # SubCite;
 // $antlr-format alignColons trailing;
-cite        : Reference key;
-Reference   : '$';
-Star        : '*';
-At          : '@';
-E1          : '`';
-E3          : '```';
-MacroEscape : '`' ('\\' [`] | ~[`])+? '`';
+Reference : '$';
+Star      : '*';
+At        : '@';
 /*====================================================================================================================*/
 data : (integer | decimal | specialID | string | list | dict | cite | macro);
 list : '[' empty* ']' # ListEmpty | '[' (data eos?)* ']' # ListStatement;

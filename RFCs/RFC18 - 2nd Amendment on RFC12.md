@@ -1,51 +1,106 @@
-RFC17: Binding Macro
+RFC18: Binding Macro
 ====================
+
+- [2nd Amendment on RFC12][#12]
+- 提出时间: 2019-05-05
+- 当前状态: 已采纳
 
 ## Motivation
 
-
-由于不同的语言允许的特殊符号不同, 为了兼容考虑宏的模式只能由英文字母组成 `[@][a-zA-Z]+`
-
-使用所有符号仍是合法的, 但是造成语言之间的迁移问题的话, 自行处理.
-
-将宏分类为两种, 建议命名法:
-
-- 数据类型: `[@][a-z][a-zA-Z]*`.
-- 数据容器: `[@][A-Z][a-zA-Z]*`.
-
-## Reference
-
-[#RFC3: Structured Macro](./RFC3%20-%20Structured%20Macro.md)
+废弃 `` ` ``, 统一宏的用法.
 
 ## Design
 
+### Part I
+
+废弃以下语法:
+
+```antlr
+macro       : At apply = Identifier MacroEscape
+MacroEscape : E ('\\' [`] | ~[`])+? E;
+fragment E  : '`';
+```
+
+改为
+
+```antlr
+macro: At apply = Identifier value = string # SimpleMacro;
+```
+
+没有必要增加额外的符号 `` ` `` 来规避转义, 字符串模式已经很好的处理了转义问题.
+
+### Part II
+
+如果不带任何参数, 则为空声明, 表示该宏不需要参数.
+
+考虑如下可能歧义, 均能正确解析:
+
 ```arc
-key@macro = 'raw-value'
+(t1)
+key = @macro
+"value" = 1
+
+(t2)
+key = @macro
+"path"/value = 2
+
+(t3)
+key = @macro
+"raw_text"value = 3
 ```
 
-表示将右边的输入交给左边的 Handler.
+结果为:
 
-此特性有助于语言的反射特性实现
+```ts
+module.exports = {
+    t1: {
+        key: {
+            task: 'error',
+            info: 'macro not implement',
+            name: 'macro',
+            text: '',
+        },
+        value: 1
+    },
+    t2: {
+        key: {
+            task: 'error',
+            info: 'macro not implement',
+            name: 'macro',
+            text: '',
+        },
+        path: {
+            value: 2
+        },
+    },
+    t3: {
+        key: {
+            task: 'error',
+            info: 'macro not implement',
+            name: 'macro',
+            text: 'raw_text',
+        },
+        value: 3
+    }
+}
+```
+
+### Part III
+
+由于可能的歧义, 不进一步将宏扩展至字符串和列表以外的情况.
+
+使用字符串以后, 相当于对键绑定一个事件.
+
+可以进一步推广到键的左边
 
 ```arc
-key@List  = [1, "2", "2"]
-key@Tuple = [1, 2, 2]
-key@Set   = [1, 2, 3]
+address = @ip'192.168.0.1'
 ```
 
+等价于 
 
-允许 
-
-
-
-考虑不同的符号
-
-```text
-key~Set = [1, 2, 3]
-key@Set = [1, 2, 3]
-key#Set = [1, 2, 3]
-key^Set = [1, 2, 3]
-key&Set = [1, 2, 3]
-key*Set = [1, 2, 3]
-key?Set = [1, 2, 3]
+```arc
+address@ip = '192.168.0.1'
 ```
+
+[#12]: ./RFC12%20-%20Standardize%20Macro.md
