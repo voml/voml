@@ -56,20 +56,18 @@ string
     | StringEscapeSingle  # StringEscapeSingle
     | StringLiteralBlock  # StringLiteralBlock
     | StringLiteralSingle # StringLiteralSingle
-    | S6 S6               # StringEmpty
-    | S3 S3               # StringEmpty
-    | S2 S2               # StringEmpty
-    | S1 S1               # StringEmpty;
+    | StringEmpty         # StringEmpty;
 // $antlr-format alignColons trailing;
-S6                  : '"""';
-S3                  : '\'\'\'';
-S2                  : '"';
-S1                  : '\'';
 StringEscapeBlock   : S6 CharLevel1+? S6;
 StringEscapeSingle  : S2 CharLevel2+? S2;
 StringLiteralBlock  : S3 NonEscape S3;
 StringLiteralSingle : S1 ~[']+? S1;
+StringEmpty         : S6 S6 | S3 S3 | S2 S2 | S1 S1;
 NewLine             : ('\r'? '\n' | '\r')+ -> skip;
+fragment S6         : '"""';
+fragment S3         : '\'\'\'';
+fragment S2         : '"';
+fragment S1         : '\'';
 fragment CharLevel1 : '\\' (["\\/0bfnrt] | UTF8 | UTF16) | ~[\\];
 fragment CharLevel2 : '\\' (["\\/0bfnrt] | UTF8 | UTF16) | ~["\\];
 fragment UTF8       : 'u' HEX HEX HEX HEX;
@@ -84,6 +82,7 @@ macro
 // $antlr-format alignColons trailing;
 cite        : Reference key;
 Reference   : '$';
+Star        : '*';
 At          : '@';
 E1          : '`';
 E3          : '```';
@@ -94,10 +93,10 @@ list : '[' empty* ']' # ListEmpty | '[' (data eos?)* ']' # ListStatement;
 dict : '{' empty* '}' # DictEmpty | '{' statement* '}' # DictStatement;
 /*====================================================================================================================*/
 dict_scope   : '(' header = key ')' (record | dict_inherit | list_inherit empty*)* # DictScope;
-dict_inherit : '(' '/' header = key ')' (record | dict_inherit | list_inherit empty*)+ # DictInherit;
+dict_inherit : '(' '/' header = key ')' (record empty*)+ # DictInherit;
 list_scope   : '<' header = key '>' (group empty*)+ # ListScope;
 list_inherit : '<' '/' header = key '>' (group empty*)+ # ListInherit;
-group        : '*' (record empty*)+ # DictGroup | '&' data+ # DataGroup;
+group        : Star (record empty*)+ # DictGroup | '&' data+ # DataGroup;
 /*====================================================================================================================*/
 LineComment                : Sharp ~[\r\n]* -> channel(HIDDEN);
 PartComment                : Comment .*? Comment -> channel(HIDDEN);
