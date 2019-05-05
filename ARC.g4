@@ -43,7 +43,8 @@ decimal
     : Sign? left = Integer Dot right = Integer? # DecimalLiteral
     | Sign? Dot right = Integer                 # DecimalZero;
 fragment NameStartCharacter
-    : Underline
+    : [+-]
+    | Underline
     | [\p{Latin}]
     | [\p{Han}]
     | [\p{Hiragana}]
@@ -55,15 +56,19 @@ string
     | StringEscapeSingle  # StringEscapeSingle
     | StringLiteralBlock  # StringLiteralBlock
     | StringLiteralSingle # StringLiteralSingle
-    | '"""' '"""'         # StringEmpty
-    | '\'\'\'' '\'\'\''   # StringEmpty
-    | '"' '"'             # StringEmpty
-    | '\'' '\''           # StringEmpty;
+    | S6 S6               # StringEmpty
+    | S3 S3               # StringEmpty
+    | S2 S2               # StringEmpty
+    | S1 S1               # StringEmpty;
 // $antlr-format alignColons trailing;
-StringEscapeBlock   : '"""' CharLevel1+? '"""';
-StringEscapeSingle  : '"' CharLevel2+? '"';
-StringLiteralBlock  : '\'\'\'' NonEscape '\'\'\'';
-StringLiteralSingle : '\'' ~[']+? '\'';
+S6                  : '"""';
+S3                  : '\'\'\'';
+S2                  : '"';
+S1                  : '\'';
+StringEscapeBlock   : S6 CharLevel1+? S6;
+StringEscapeSingle  : S2 CharLevel2+? S2;
+StringLiteralBlock  : S3 NonEscape S3;
+StringLiteralSingle : S1 ~[']+? S1;
 NewLine             : ('\r'? '\n' | '\r')+ -> skip;
 fragment CharLevel1 : '\\' (["\\/0bfnrt] | UTF8 | UTF16) | ~[\\];
 fragment CharLevel2 : '\\' (["\\/0bfnrt] | UTF8 | UTF16) | ~["\\];
@@ -73,11 +78,15 @@ fragment NonEscape  : ~[\u0001]+?;
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 macro
-    : '@' apply = Identifier value = StringLiteralBlock # LiteralMacro
-    | '@' apply = Identifier MacroEscape                # SimpleMacro
-    | '@' apply = Identifier '`' '`'                    # EmptyMacro;
+    : At apply = Identifier value = StringLiteralBlock # LiteralMacro
+    | At apply = Identifier MacroEscape                # SimpleMacro
+    | At apply = Identifier '`' '`'                    # EmptyMacro;
 // $antlr-format alignColons trailing;
-cite        : '$' key;
+cite        : Reference key;
+Reference   : '$';
+At          : '@';
+E1          : '`';
+E3          : '```';
 MacroEscape : '`' ('\\' [`] | ~[`])+? '`';
 /*====================================================================================================================*/
 data : (integer | decimal | specialID | string | list | dict | cite | macro);
@@ -88,7 +97,7 @@ dict_scope   : '(' header = key ')' (record | dict_inherit | list_inherit empty*
 dict_inherit : '(' '/' header = key ')' (record | dict_inherit | list_inherit empty*)+ # DictInherit;
 list_scope   : '<' header = key '>' (group empty*)+ # ListScope;
 list_inherit : '<' '/' header = key '>' (group empty*)+ # ListInherit;
-group        : '*' (record empty*)+ # DictGroup | '&'? data+ # DataGroup ;
+group        : '*' (record empty*)+ # DictGroup | '&' data+ # DataGroup;
 /*====================================================================================================================*/
 LineComment                : Sharp ~[\r\n]* -> channel(HIDDEN);
 PartComment                : Comment .*? Comment -> channel(HIDDEN);
