@@ -6,7 +6,7 @@
     "main": "source/index.ts",
     "license": "MPL-2.0",
     "scripts": {
-        "antlr": "antlr4ts -visitor ARC.g4 -o ./source",
+        "antlr": "antlr4ts -visitor grammar/ARC.g4 -o ./source",
         "build": "yarn antlr && tsc -b",
         "upload": "yarn antlr && npm publish --access public"
     },

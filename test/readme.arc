@@ -16,8 +16,8 @@ int1 =+99
 int2 = 42
 int3 = 0
 int4 =-17
-int5 = 1___000
-int6 = 5_349_221_
+int5 = 1_000
+int6 = 5_349_221
 int7 = 1_2_3_4_5
 % fractional
 flt1 = 0.
@@ -38,7 +38,7 @@ sf6 =-NAN % valid, actual encoding is implementation specific
 
 (String)
 singleline = "I'm a string."
-multiline = """
+multiline  = """
 \b     - backspace       (U+0008)
 \t     - tab             (U+0009)
 \n     - linefeed        (U+000A)
@@ -69,8 +69,8 @@ arr2 = ["red", "yellow", "green"]
 arr3 = [[1, 2], [3, 4, 5]]
 arr4 = ["all", 'strings', """are the same""", '''type''']
 arr5 = [
-    [1, 2]
-    ["a", "b", "c"]
+  [1, 2]
+  ["a", "b", "c"]
 ]
 arr6 = [1, 2.0]
 
@@ -78,9 +78,9 @@ arr6 = [1, 2.0]
 (fruit)
 name = "apple"
 inlineTable = [
-    { x = 1, y = 2, z = 3 },
-    { x = 7, y = 5, z = 9 },
-    { x = 2, y = 4, z = 8 },
+  { x = 1, y = 2, z = 3 },
+  { x = 7, y = 5, z = 9 },
+  { x = 2, y = 4, z = 8 },
 ]
 
 
@@ -89,38 +89,38 @@ inlineTable = [
 & "Banana"
 & "Cherry"
 
-<fruit/detail>
-* name = "Apple"
+<fruit\detail>
+* name  = "Apple"
   color = "red"
-* name = "Banana"
+* name  = "Banana"
   color = "yellow"
-* name = "apple"
+* name  = "apple"
   color = "red"
 
 
 (servers)
-(servers/alpha)
-ip = @ip`192.168.255.1`
-pw = "力微任重久神疲"
-(servers/beta)
-ip = @ip`192.168.256.1`
-pw = "再竭衰庸定不支"
-(servers/meta)
-ip = [
-    $servers/alpha/ip,
-    $servers/beta/ip
-]
-pw = $servers/*/pw
+  (\alpha)
+  ip @ip = '192.168.255.1'
+  pw = "力微任重久神疲"
+  (\beta)
+  ip @ip = '192.168.256.1'
+  pw = "再竭衰庸定不支"
+  (\meta)
+  ip = [
+    $servers\alpha\ip,
+    $servers\beta\ip
+  ]
+% pw = $servers\*\pw
 
 
 (DateTime)
-ld1  = @d`1979-05-27`           % Local Date
-lt1  = @d`07:32:00`             % Local Time
-ldt1 = @d`1979-05-27T07:32:00`  % Local Date-Time
-odt1 = @d`1979-05-27T07:32:00Z` % Offset Date-Time
-odt2 = @d'''1979-05-27T07:32:00Z'''
+ld1  = @d'1979-05-27'           % Local Date
+lt1  = @d'07:32:00'             % Local Time
+ldt1 = @d'1979-05-27T07:32:00'  % Local Date-Time
+odt1 = @d'1979-05-27T07:32:00Z' % Offset Date-Time
+odt2 = @date'''1979-05-27T07:32:00Z'''
 
 
 (Regex)
-ipv4 = @re`^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$`
-ipv6 = @re`^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$`
+ipv4 @re = '^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$'
+ipv6 @re = '^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$'
