@@ -9,16 +9,36 @@ const locale_cn = {
         }
     },
     sidebar: {
-        "/cn/appendix/": [
+        "/cn/": [
             {
-                title: '附录',
-                collapsable: true,
+                title: '教程',
+                collapsable: false,
                 children: [
-                    ['', '附录A'],
-                    ['other', '附录B'],
+                    ['basic/', '基本语法'],
+                    ['basic/number', '数字详解'],
+                    ['basic/string', '字符详解'],
                 ]
             },
-        ]
+            {
+                title: '其他',
+                collapsable: false,
+                children: [
+                    ['advance/', '进阶用法'],
+                    ['advance/macros', '宏'],
+                    ['advance/history', '进阶用法'],
+                ]
+            },
+            {
+                title: '迁移',
+                collapsable: false,
+                children: [
+                    ['migrate/From JSON', 'JSON 迁移手册'],
+                    ['migrate/From YAML', 'YAML 迁移手册'],
+                    ['migrate/From TOML', 'TOML 迁移手册'],
+                    ['migrate/From HOCON', 'HOCON 迁移手册'],
+                ]
+            },
+        ],
     }
 }
 
@@ -34,12 +54,13 @@ const locale_en = {
         }
     },
     sidebar: {
-        "/en/appendix/": [
+        "/en/": [
             {
                 title: 'Appendix',
                 collapsable: true,
                 children: [
-                    ['', 'Appendix A'],
+                    ['migrate/From JSON', 'Appendix A'],
+                    ['migrate/From YAML', 'Appendix A'],
                 ]
             },
         ]
@@ -51,12 +72,12 @@ module.exports = {
     locales: {
         '/cn/': {
             lang: 'zh-CN',
-            title: 'TemplateVuepress',
+            title: 'Arc 配置语言',
             lastUpdated: 'Last Updated',
         },
         '/en/': {
             lang: 'en-US',
-            title: 'TemplateVuepress',
+            title: 'Arc Language',
             lastUpdated: 'Last Updated',
         }
     },
@@ -64,7 +85,7 @@ module.exports = {
         ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }]
     ],
     themeConfig: {
-        repo: 'GalAster/TemplateVuepress',
+        repo: 'nyar-lang/arc-language',
         editLinks: true,
         docsDir: 'docs',
         markdown: {
@@ -81,9 +102,6 @@ module.exports = {
         }
     },
     plugins: {
-        mathjax: {
-            target: 'chtml',
-            presets: [],
-        },
+
     }
 };

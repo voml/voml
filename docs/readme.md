@@ -1,5 +1,5 @@
 ## Choose your language
 
 
-- [简体中文](/cn/appendix/)
-- [English](/en/appendix/)
+- [简体中文](/cn/basic/)
+- [English](/en/basic/)
