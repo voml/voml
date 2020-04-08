@@ -9,7 +9,10 @@ RFC27: Date & Time Macros
 
 ##
 
-
+```ts
+input: string|number
+output: type
+```
 
 
 
