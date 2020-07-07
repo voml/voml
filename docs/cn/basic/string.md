@@ -4,7 +4,7 @@
 
 ### character
 
-字符类型 character 使用 `` ` ` `` 包围表示
+字符类型 character 使用 `` ` ` `` 包围表示:
 
 ```js
 default = ` `
@@ -13,7 +13,7 @@ char1 = `c`
 
 ### string
 
-字符串类型 string 使用 `" "` 或者 `' '` 包围表示
+字符串类型 string 使用 `" "` 或者 `' '` 包围表示:
 
 
 ```js
@@ -44,14 +44,14 @@ str4 = "\""
 
 ### multiline string
 
-多行字符串是字符串的一种, 使用三个或以上 ` ` ` 包围表示
+多行字符串是字符串的一种, 使用三个或以上 ` ` ` 包围表示:
 
 
 `````js
 ````
 this is a multiline string
 'this is a string inside multiline string'
-'this is another string inside multiline string'
+"this is another string inside multiline string"
 ```this is a nested multiline string```
 ````
 `````
@@ -59,7 +59,7 @@ this is a multiline string
 
 ### typed string
 
-字符串的注解类型在前方, 可以添加空格或者回车隔开
+字符串的注解类型在前方, 可以添加空格或者回车隔开:
 
 ```js
 raw_text = r" "
