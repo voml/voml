@@ -17,6 +17,7 @@ const locale_cn = {
                     ['basic/', '基本语法'],
                     ['basic/number', '数字详解'],
                     ['basic/string', '字符详解'],
+                    ['basic/scope', '路由与域'],
                 ]
             },
             {
@@ -60,7 +61,7 @@ const locale_en = {
                 collapsable: true,
                 children: [
                     ['migrate/From JSON', 'Appendix A'],
-                    ['migrate/From YAML', 'Appendix A'],
+                    ['migrate/From TOML', 'Appendix A'],
                 ]
             },
         ]

@@ -12,7 +12,8 @@ target/
 node_modules/
 yarn.lock
 yarn-error.log
+package-lock.json
+docs/.build/
 
 # Build
-source/*
 *.nb

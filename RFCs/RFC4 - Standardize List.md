@@ -5,18 +5,31 @@ RFC4 - List Nested Scope
 - 当前状态: 已采纳
 
 ## Motivation
-Scope 作为一等公民, 需要允许被嵌入字典中.
+
+标准化列表(List)语义.
+
+## Relation
+
+- [#RFC1: JSON Compatible][#1]: 采纳
+- [#RFC5: Inherit Scope][#5]: 采纳
+- [#RFC23: 1st Amendment][#23]: 采纳
+- [#RFC24: 2nd Amendment][#24]: 否决
+
 
 ## Design
 
-出现歧义
+由
 
-```arc
-<a>
-& [1,2,3]
-  [4,5,6]
-* b = true
-  c = false
-  [7 8 9]
-  d = null
-```
+
+
+`[ ]`
+
+
+First Amendment
+
+
+
+[#1]: ./RFC1%20-%20JSON%20Compatible.md
+[#5]: ./RFC5%20-%20Inherit%20Scope.md
+[#23]: ./RFC23%20-%201st%20Amendment%20on%20RFC4.md
+[#24]: ./RFC24%20-%202nd%20Amendment%20on%20RFC4.md

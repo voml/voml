@@ -4,7 +4,7 @@ Arc Readable Configuration
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![LICENSE](https://img.shields.io/badge/license-MPL%202.0-blue.svg?style=flat-square)](https://github.com/GalAster/vscode-toml/blob/master/License.md)
 
-## How to Start
+## How to Start [![Netlify Status](https://api.netlify.com/api/v1/badges/fbb30971-c014-4c7e-b268-40540b200a3c/deploy-status)](https://app.netlify.com/sites/arc-lang/deploys)
 
 Just copy json file, then remove `{ }` pair, following [json migration tutorial](https://github.com/Moe-Net/Arc-Language/blob/master/i18n/en/From%20JSON.md).
 
@@ -13,18 +13,18 @@ Try js parser: [Arc - Hive](https://github.com/GalAster/Arc-Hive)
 Try vscode support: [VScode - ARC](https://github.com/GalAster/vscode-arc/tree/master)
 
 ## DataType
+
 | Type     | Example             | Remark           |
 | :------- | :------------------ | :--------------- |
 | Integer  | `25`                | Atom, BigInteger |
 | Decimal  | `1.234`             | Atom, Not Float  |
 | String   | `'literal'`         | Atom             |
-| Cite     | `$cite/path`        | Atom             |
+| Cite     | `$cite.path`        | Atom             |
 | Special  | `true`, `null`      | Atom             |
-| Macro    | `` @macro`apply` `` | Macro            |
-| List     | `[1, 2, 3]`         | Container        |
+| List     | `(1, 2, 3)`         | Container        |
 | Dict     | `{1: 3}`            | Container        |
-| ListMark | `<list/path>`       | Scope            |
-| DictMark | `(dict/path)`       | Scope            |
+| DictMark | `[dict.path]`       | Scope            |
+| ListMark | `<list.path>`       | Scope            |
 
 - How to expand a macro is determined by the host language. In most cases, ARC does not mandate how the language handle cases.
 - There is also no rule on how to handle special values.
