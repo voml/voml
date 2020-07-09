@@ -1,7 +1,8 @@
-RFC4 - List Nested Scope
+RFC18 - Standardize List
 ========================
 
 - 提出时间: 2019-04-20
+- 最后更新: 2020-07-09
 - 当前状态: 已采纳
 
 ## Motivation
@@ -18,14 +19,33 @@ RFC4 - List Nested Scope
 
 ## Design
 
-由
+由 `( )` 包裹表示一个列表
+
+### Default
+
+list 的默认值为空列表
+
+```
+default = ()
+```
+
+
+列表中元素可以为任意类型
+
+```
+list1 = (1, 2, 3)
+list2 = ("a", "b", "c")
+```
+
+
+列表中元素不必为相同类型
 
 
 
-`[ ]`
+列表元素可以使用 `,` 或 `;` 或者 ` ` 分割
 
 
-First Amendment
+
 
 
 

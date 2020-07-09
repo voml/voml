@@ -1,7 +1,8 @@
-RFC23: First Amendment on RFC4
-==============================
+RFC23: Consecutively inserted values for list
+=============================================
 
 - 提出时间: 2019-05-03
+- 最后更新: 2019-08-25
 - 当前状态: 已采纳
 
 ## Motivation
