@@ -1,4 +1,5 @@
-# Scope
+Routing & Scope
+===============
 
 ## allow
 
@@ -11,7 +12,7 @@ scope 等价于 key, key 不能添加类型注解, 只有 value 才有类型注�
 
 <a>
 
-## dict 
+### dict 
 
 
 ```
@@ -21,7 +22,7 @@ b = false
 list = (1, 2, 3)
 ```
 
-## list 
+### list 
 
 ```
 <list>
@@ -31,13 +32,15 @@ list = (1, 2, 3)
   b = false
 ```
 
-## 
+### inheritance
 
 域有继承关系
 
-<first>
-<.second>
 
+```
+[first]
+[.second]
+```
 
 ## warning
 
@@ -47,7 +50,14 @@ list = (1, 2, 3)
 < a.b>
 ```
 
-## deny
+## error
+
+- 尝试继承列表域
+
+```
+<father>
+<.node>
+```
 
 
 
