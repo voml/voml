@@ -1,4 +1,4 @@
-RFC19: Structured Macro
+RFC9999: Structured Macro
 =======================
 
 - [3rd Amendment on RFC12][#12]
