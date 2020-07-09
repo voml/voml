@@ -17,6 +17,8 @@ const locale_cn = {
                     ['basic/', '基本语法'],
                     ['basic/number', '数字详解'],
                     ['basic/string', '字符详解'],
+                    ['basic/container', '词典与列表'],
+                    ['basic/scope', '路由与域'],
                 ]
             },
             {
