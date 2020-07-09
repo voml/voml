@@ -22,29 +22,70 @@ ARC 中, 值不能是字母, 除非是此处定义的特殊值.
 | Missing  | ❔     | Nothing         | ❌     | Empty | ❌     |
 
 ### Boolean Values
-True
-False
-Unknown/Undefined
+
+| Language    | True | False | Unknow    | Undefined |
+| :---------- | :--- | :---- | :-------- | :-------- |
+| Typescript  | true | false | undefined | undefined |
+| Python      | True | False | None      | None      |
+| CSharp      |
+| Mathematica | True | False | Missing   | Missing   |
+
 
 ### Null
 
-null
+null/none/nil
 
-### None
-none/nil
+| Language    | Null | None | Nil       |
+| :---------- | :--- | :--- | :-------- |
+| Typescript  | null | none | undefined |
+| Python      | None | None | None      |
+| CSharp      |
+| Rust        |
+| Mathematica | Null | None | Missing   |
+
 
 ### NaN
 IEEE 754
 
+
+| Language    | NaN  |
+| :---------- | :--- |
+| Typescript  |      |
+| Python      |      |
+| CSharp      |      |
+| Rust        |      |
+| Mathematica |      |
+
 ### Infinity
 IEEE 754
 
-Infinity
-ComplexInfinity
+
+| Language    | Infinity | ComplexInfinity |
+| :---------- | :------- | :-------------- |
+| Typescript  |          | undefined       |
+| Python      |          | None            |
+| CSharp      |          |                 |
+| Rust        |          |                 |
+| Mathematica | Infinity | ComplexInfinity |
+
 
 
 ### Missing
-missing
+
+| Language    | Missing   |
+| :---------- | :-------- |
+| Typescript  | undefined |
+| Python      | None      |
+| CSharp      |
+| Rust        |
+| Mathematica | Missing   |
 
 ### Nothing
-nothing/empty
+
+| Language    | Nothing   | Empty     |
+| :---------- | :-------- | :-------- |
+| Typescript  | undefined | undefined |
+| Python      | None      | None      |
+| CSharp      |
+| Rust        |
+| Mathematica | Nothing   | Missing   |

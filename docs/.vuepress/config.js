@@ -62,7 +62,7 @@ const locale_en = {
                 collapsable: true,
                 children: [
                     ['migrate/From JSON', 'Appendix A'],
-                    ['migrate/From YAML', 'Appendix A'],
+                    ['migrate/From TOML', 'Appendix A'],
                 ]
             },
         ]
