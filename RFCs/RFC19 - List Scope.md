@@ -15,8 +15,8 @@ RFC19: List Scope
 
 
 ```js
-module.export = {
-list: [0, "string", null]
+module.exports = {
+    list: [0, "string", null]
 }
 ```
 
@@ -29,11 +29,11 @@ list: [0, "string", null]
 ```
 
 ```js
-module.export = {
-list: [
-{a:1,b:2},
-{c:3}
-]
+module.exports = {
+    list: [
+        { a: 1, b: 2 },
+        { c: 3 }
+    ]
 }
 ```
 
@@ -46,15 +46,15 @@ list: [
 ```
 
 ```js
-module.export = {
-list: [
-{a:1,b:2},
-"string"
-]
+module.exports = {
+    list: [
+        { a: 1, b: 2 },
+        "string"
+    ]
 }
 ```
 
-允许但不推荐
+允许但不推荐 [RFC23]()
 
 ```
 <list>
@@ -65,12 +65,12 @@ list: [
 ```
 
 ```js
-module.export = {
-list: [
-{a:1,b:2},
-"string",
-null
-]
+module.exports = {
+    list: [
+        { a: 1, b: 2 },
+        "string",
+        null
+    ]
 }
 ```
 
