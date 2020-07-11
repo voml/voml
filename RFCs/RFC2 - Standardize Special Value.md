@@ -13,21 +13,21 @@ ARC 中, 值不能是字母, 除非是此处定义的特殊值.
 特殊值不区分大小写
 
 | Name     | State | Name            | State | Name  | State |
-| :------- | :---- | :-------------- | :---- | :---- | :---- |
-| True     | ✔️    | False           | ✔️    |
-| Unknown  | ❔     | Undefined       | ❔     |
-| Null     | ✔️    | None            | ❔     |
-| NaN      | ✔️    |
-| Infinity | ✔️    | ComplexInfinity | ❔     |
+|:---------|:------|:----------------|:------|:------|:------|
+| True     | ✔️    | False           | ✔️    |       |       |
+| Unknown  | ❔     | Undefined       | ❔     |       |       |
+| Null     | ✔️    | None            | ❔     |       |       |
+| NaN      | ✔️    |                 |       |       |       |
+| Infinity | ✔️    | ComplexInfinity | ❔     |       |       |
 | Missing  | ❔     | Nothing         | ❌     | Empty | ❌     |
 
 ### Boolean Values
 
-| Language    | True | False | Unknow    | Undefined |
-| :---------- | :--- | :---- | :-------- | :-------- |
+| Language    | True | False | Unknown    | Undefined |
+|:------------|:-----|:------|:----------|:----------|
 | Typescript  | true | false | undefined | undefined |
 | Python      | True | False | None      | None      |
-| CSharp      |
+| CSharp      |      |       |           |           |
 | Mathematica | True | False | Missing   | Missing   |
 
 
@@ -36,11 +36,11 @@ ARC 中, 值不能是字母, 除非是此处定义的特殊值.
 null/none/nil
 
 | Language    | Null | None | Nil       |
-| :---------- | :--- | :--- | :-------- |
+|:------------|:-----|:-----|:----------|
 | Typescript  | null | none | undefined |
 | Python      | None | None | None      |
-| CSharp      |
-| Rust        |
+| CSharp      |      |      |           |
+| Rust        |      |      |           |
 | Mathematica | Null | None | Missing   |
 
 
@@ -73,19 +73,19 @@ IEEE 754
 ### Missing
 
 | Language    | Missing   |
-| :---------- | :-------- |
+|:------------|:----------|
 | Typescript  | undefined |
 | Python      | None      |
-| CSharp      |
-| Rust        |
+| CSharp      |           |
+| Rust        |           |
 | Mathematica | Missing   |
 
 ### Nothing
 
 | Language    | Nothing   | Empty     |
-| :---------- | :-------- | :-------- |
+|:------------|:----------|:----------|
 | Typescript  | undefined | undefined |
 | Python      | None      | None      |
-| CSharp      |
-| Rust        |
+| CSharp      |           |           |
+| Rust        |           |           |
 | Mathematica | Nothing   | Missing   |
