@@ -5,7 +5,7 @@ RFC9999: Template
 - Pending: ![](https://img.shields.io/badge/Stage-Experiment-important.svg?style=flat-square)
 - Abandoned: ![](https://img.shields.io/badge/Stage-Abandoned-critical.svg?style=flat-square)
 - Proposal: ![](https://img.shields.io/badge/Stage-Proposal-inactive.svg?style=flat-square)
-- Complement: ![](https://img.shields.io/badge/Stage-Recommended-informational.svg?style=flat-square)
+- Complement: ![](https://img.shields.io/badge/Stage-Complement-informational.svg?style=flat-square)
 
 - 提出时间: 2000-00-00
 - 最后修改: 2000-00-00
