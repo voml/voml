@@ -60,18 +60,26 @@ RFC25: Glossary
 
 要且只要一个符号.
 
-### Macro Stages
+
+
+### Type Hint Stages
 
 仅有 `Level-S` 的标准级数据结构要求解析器实现, 其他都是可选的.
 
 | Stage | Detail                                      | Mark                    |
 | :---- | :------------------------------------------ | :---------------------- |
-| 标准  | `Level-S`: 几乎所有的语言中都有的数据结构   | ![Standarded][Macro-S]  |
-| 推荐  | `Level-A`: 很多语言中都有, 常用的数据结构   | ![Recommended][Macro-A] |
-| 实验  | `Level-B`: 很有用的数据结构                 | ![Experiment][Macro-B]  |
-| 讨论  | `Level-C`: 该数据结构的用途及普适性有待考量 | ![Controversy][Macro-C] |
-| 草案  | `Level-D`: 某种语言中有的概念或特殊的结构   | ![Proposal][Macro-D]    |
+| 标准  | `Level-S` : 几乎所有的语言中都有的数据结构   | ![Standarded][Macro-S]  |
+| 推荐  | `Level-A` : 很多语言中都有, 常用的数据结构   | ![Recommended][Macro-A] |
+| 实验  | `Level-B` : 很有用的数据结构                 | ![Experiment][Macro-B]  |
+| 讨论  | `Level-C` : 该数据结构的用途及普适性有待考量 | ![Controversy][Macro-C] |
+| 草案  | `Level-D` : 某种语言中有的概念或特殊的结构   | ![Proposal][Macro-D]    |
 
+
+[Adopted]: https://img.shields.io/badge/Stage-Standarded-success.svg?style=flat-square
+[Pending]: https://img.shields.io/badge/Stage-Experiment-important.svg?style=flat-square
+[Abandoned]: https://img.shields.io/badge/Stage-Abandoned-critical.svg?style=flat-square
+[Proposal]: https://img.shields.io/badge/Stage-Proposal-inactive.svg?style=flat-square
+[Complement]: https://img.shields.io/badge/Stage-Recommended-informational.svg?style=flat-square
 
 [Macro-S]: https://img.shields.io/badge/Stage-Standarded-success.svg?style=flat-square
 [Macro-A]: https://img.shields.io/badge/Stage-Recommended-informational.svg?style=flat-square
