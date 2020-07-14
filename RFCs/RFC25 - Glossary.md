@@ -1,8 +1,9 @@
 RFC25: Glossary
 ===============
+![](https://img.shields.io/badge/Stage-Complement-informational.svg?style=flat-square)
 
 - 提出时间: 2019-05-04
-- 当前状态: 无关
+- 最后修改: 2019-05-04
 
 ## Motivation
 
@@ -87,7 +88,7 @@ RFC25: Glossary
 [Pending]: https://img.shields.io/badge/Stage-Experiment-important.svg?style=flat-square
 [Abandoned]: https://img.shields.io/badge/Stage-Abandoned-critical.svg?style=flat-square
 [Proposal]: https://img.shields.io/badge/Stage-Proposal-inactive.svg?style=flat-square
-[Complement]: https://img.shields.io/badge/Stage-Recommended-informational.svg?style=flat-square
+[Complement]: https://img.shields.io/badge/Stage-Complement-informational.svg?style=flat-square
 
 [Macro-S]: https://img.shields.io/badge/Stage-Standarded-success.svg?style=flat-square
 [Macro-A]: https://img.shields.io/badge/Stage-Recommended-informational.svg?style=flat-square
