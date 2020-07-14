@@ -1,8 +1,9 @@
 RFC1: JSON Compatible
 =====================
+![](https://img.shields.io/badge/State-Adopted-success.svg?style=flat-square)
 
 - 提出时间: 2019-04-15
-- 当前状态: 已采纳
+- 最后修改: 2020-07-15
 
 ## Motivation
 
@@ -10,9 +11,11 @@ JSON 是一种广泛采用的数据格式, 如果能几乎不加改动的使用�
 
 ARC 必须被解析为 Hashmap, 所以最小化改动就是去掉首尾的 `{ }`.
 
-## Related
+同时一个 JSON 片段应该预期能无修改的直接插入 ARC 文件中.
 
-- [#RFC6](./RFC6%20-%20Default%20Export.md): 允许使用 `--default` 参数直接导入 `json` 文法.
+### Related
+
+- [#RFC31](RFC31%20-%20Import%20Statement.md): 允许直接导入一个 json 文件.
 
 ## Design
 
@@ -28,6 +31,6 @@ ARC 必须被解析为 Hashmap, 所以最小化改动就是去掉首尾的 `{ }`
 
 ### Array 兼容
 
-List 的文法由 `( )` 改为 `[ ]`.
+List 的正规文法为 `( )`, 同时兼容 `[ ]`.
 
 相应的 List Scope 从 `[ ]` 改为 `( )`.
