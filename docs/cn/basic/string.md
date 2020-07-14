@@ -69,16 +69,16 @@ raw_text = r" "
 
 - 不要使用带**空格或回车**的字符/字符串注解
 
-```
-warn1 = r "warning"
+```js
+warn1 = r"warning"
 warn2 = r
 "warning"
 ```
 
 - 不要使用带**空格**的多行字符串注解
 
-```
-warn1 = r ```warning```
+```ini
+warn1 = r```warning```
 ```
 
 ## deny
@@ -88,4 +88,10 @@ warn1 = r ```warning```
 
 ```js
 error = ``
+```
+
+- 禁止非法的转义
+
+```js
+error = "\a"
 ```
