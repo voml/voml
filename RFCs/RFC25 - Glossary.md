@@ -60,7 +60,15 @@ RFC25: Glossary
 
 要且只要一个符号.
 
+### RFC Stages
 
+| Stage | Detail                                      | Mark                    |
+| :---- | :------------------------------------------ | :---------------------- |
+| 标准  | 已经通过成为标准的提案   | ![Adopted][Adopted]  |
+| 待定  | 由于种种因素还未通过的提案   | ![Pending][Pending] |
+| 失效  | 被驳回或者失效的提案 | ![Abandoned][Abandoned]  |
+| 草案  | 没有经过充分讨论的提案 | ![Proposal][Proposal] |
+| 补充  | 与核心语言无关的补充说明   | ![Complement][Complement]    |
 
 ### Type Hint Stages
 
