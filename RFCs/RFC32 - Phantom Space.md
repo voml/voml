@@ -20,9 +20,26 @@ root = import"./file.arc"
 version = $root.version
 ```
 
-新设计
+覆盖问题
 
 ```js
 import "file.arc" as root
+root = {version: "1.0.0"}
 version = $root.version
 ```
+
+这种情况下
+
+变量会覆盖隐变量
+
+
+```js
+root = {version: "1.0.0"}
+import "file.arc" as root
+version = $root.version
+```
+
+
+错误
+
+因此 statements 必须在最上方, 禁止隐变量覆盖变量
