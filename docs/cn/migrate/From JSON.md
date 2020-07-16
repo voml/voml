@@ -3,7 +3,7 @@ Starting with JSON
 
 Arc 可以渐进的从 Json 过渡!
 
-我们以如下 `json` 为例, 看看如何用 `arc` 改写增强可读性.
+我们以一个**实际的 `json` 配置文件**为例, 看看如何用 `arc` 改写增强可读性.
 
 ```json
 {
