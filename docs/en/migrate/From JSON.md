@@ -3,7 +3,7 @@ Starting with JSON
 
 Arc can gradually transition from Json!
 
-Let's take a **actual json configuration file** as an example, and see how to use `arc` rewriting to enhance readability.
+Let's take **an actual json configuration file** as an example, and see how to use `arc` rewriting to enhance readability.
 
 ```json
 {
@@ -82,15 +82,15 @@ Now the file already a valid arc file, but it doesn't look pretty.
 
 Then you can follow the best practices of `arc` for better readability.
 
-你可以把所有键的引号去掉, 除非他们包含 `.` 字符, 或者由纯数字构成.
+You can remove the quotes for all keys unless they contain `.` characters, or they consist of pure numbers.
 
 Single quotes are the best practice, after all, single quotes don't need to press `Shift`, but double quotes are fine.
 
-然后你可以把 json 风格的 `:` 换成 `=`, 然后去掉键值对末尾的所有 `,`.
+Then you can replace the json style `:` with `=`, and then remove all `,` at the end of the key-value pair.
 
-多行列表或者字典, 每行末尾使用 `,` 分隔.
+Multi-line lists or dictionaries, separated by `,` at the end of each line.
 
-IDE 能自动为你格式化到这一步:
+The IDE can automatically format this step for you:
 
 ```ini
 name = 'vscode-arc'
@@ -171,9 +171,9 @@ which quivalent to
 engines.vscode = '^1.8.0'
 ```
 
-这也是为什么 key 出现 `.` 必须用字符串模式的原因.
+This is why the key appears in `.` must use string mode.
 
-至于为什么纯数字也要字符串, 具体原因后面会揭示.
+As for why pure numbers are also strings, the specific reasons will be revealed later.
 
 ---
 
@@ -190,11 +190,11 @@ categories = [
 ]
 ```
 
-域表示到域切换或者文件结束为止全部挂载在这个键上
+Scope means that it is all mounted on this key until the domain is switched or the file ends
 
-字典域用 `[ ]` 表示, 列表域用 `< >` 表示.
+The dictionary field is represented by `[ ]`, and the list field is represented by `< >`.
 
-等价的写法为如下:
+The equivalent is written as follows:
 
 ```ini
 [repository]
@@ -205,7 +205,7 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 & 'Formatters'
 ```
 
-列表域使用 `&` 表示插入一个值, `*`表示插入多个键构成字典.
+The list scope uses `&` to insert a value, and `*` to insert multiple keys to form a dictionary.
 
 ```ini
 <dependence>
@@ -237,13 +237,13 @@ module.exports = [
 ]
 ```
 
-一般很少有场景需要混写 `*` 和 `&`.
+There are very few scenes where you need to mix `*` and `&`.
 
 ---
 
-我们接着考虑如何改写那个很大的 `contributes` 字段
+Let's consider how to rewrite that big "contributes" field
 
-先介绍域继承, 考虑如下构造
+First introduce **scope inheritance**, consider the following structure:
 
 ```ini
 root = {
@@ -252,7 +252,7 @@ root = {
 }
 ```
 
-你可以写成 
+You can write as:
 
 ```ini
 root = {
@@ -261,7 +261,7 @@ root = {
 }
 ```
 
-也可以写成
+And can also be written as:
 
 ```ini
 [root]
@@ -269,15 +269,15 @@ root = {
   [.b] d = false
 ```
 
-这取决于你喜不喜欢大括号, 这里的缩进都不是必须的.
+It depends on whether you like braces or not, indentation here is not necessary.
 
-`arc` 中空格, 缩进, 换行没有任何的实际意义如何排版是你的自由.
+Spaces, indents, and newlines in `arc` have no practical meaning. How to typeset is your freedom.
 
 ---
 
-接着我们了解一下什么是索引路由.
+Then we understand what is **index routing**.
 
-回到这个结构
+Back to this structure:
 
 ```ini
 contributes = {
@@ -294,7 +294,7 @@ contributes = {
 }
 ```
 
-按照之前我们学到的, 可以写成:
+According to what we learned before, it can be written as:
 
 ```ini
 <contributes.languages>
@@ -306,12 +306,12 @@ contributes = {
   configuration = './syntax/arc.configuration.json'
 ```
 
-但还有其他的写法, 这里这个字典展开标记 `*` 可以省略
+But there are other ways of writing, here this dictionary expansion tag `*` can be omitted.
 
-因为与表头的偏移是0, 所以用 0 表示即可, 此处值是字典, 所以用 `[ ]`.
+Because the offset from the header is 0, it can be represented by 0. Here the value is a dictionary, so use `[ ]`.
 
 ```ini
-[contributes.languages.1]
+[contributes.languages.0]
 id = 'arc'
 aliases = ['ARC']
 extensions = ['.arc']
@@ -322,7 +322,7 @@ configuration = './syntax/arc.configuration.json'
 
 ---
 
-最终改写的文件如下, 看看这样子是不是清晰了许多?
+The final rewritten file is as follows, is it clearer?
 
 ```ini
 # https://github.com/GalAster/vscode-arc/blob/master/package.json
