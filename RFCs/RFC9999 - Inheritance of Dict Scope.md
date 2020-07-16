@@ -7,30 +7,76 @@ RFC9999: Inheritance of Dict Scope
 
 ## Motivation
 
+简化超长超深路径的输入
+
 
 ## Design
 
+### Simple Inheritance
+
+在开头使用 `.`, 表示继承父级的名称
 
 ```ini
-[a]
-  [.b]
-  c = true
+[root]
+  [.dict]
+  v = true
+  <.list>
+  & null
 ```
 
 等价于
 
+```ini
+[root.dict]
+v = true
+<root.list>
+& null
+```
+
+展开即为
+
 ```js
 module.exports = {
-    a: {
-        b: {
-            c: true
-        }
+    root: {
+        dict: { v: true },
+        list: [null]
     }
 }
 ```
 
-### Needs Clarification
+### Nest Inheritance
 
+当有多个 `.` 起始时, 
+
+```ini
+[root]
+  [.dict]
+  v = true
+    <..list>
+    & null
+```
+
+等价于
+
+```ini
+[root.dict]
+v = true
+<root.dict.list>
+& null
+```
+
+展开即为
+
+```js
+module.exports = {
+    root: {
+        dict: {
+            v: true,
+            list: [null]
+        },
+    }
+}
+```
 
 ### Prohibited Matters
 
