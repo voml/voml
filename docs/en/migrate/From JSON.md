@@ -1,9 +1,9 @@
 Starting with JSON
 ==================
 
-ARC can gradually transition from JSON!
+Arc can gradually transition from Json!
 
-Let's take the following example of `json` to see how to enhance readability with `arc`.
+Let's take **an actual json configuration file** as an example, and see how to use `arc` rewriting to enhance readability.
 
 ```json
 {
@@ -74,25 +74,25 @@ Let's take the following example of `json` to see how to enhance readability wit
 }
 ```
 
-First, remove the `{ }` at the beginning and ending, because `arc` must be the form of the key-value pair.
+First, remove the { } at the beginning and ending, because arc must be the form of the key-value pair.
 
-Now the file already a valid `arc` file, but it doesn't look pretty.
+Now the file already a valid arc file, but it doesn't look pretty.
 
 ---
 
 Then you can follow the best practices of `arc` for better readability.
 
-You can remove the quotation marks of all keys, unless they contain `/` characters, or consist of pure numbers.
+You can remove the quotes for all keys unless they contain `.` characters, or they consist of pure numbers.
 
-Single quotes are best practices, but double quotes are also available, single quotes do not escaped, while double quotes support escape.
+Single quotes are the best practice, after all, single quotes don't need to press `Shift`, but double quotes are fine.
 
-Then you can replace the json style `:` with `=`
+Then you can replace the json style `:` with `=`, and then remove all `,` at the end of the key-value pair.
 
-Then remove all the `,` at the end of the key-value pair, unless it is a multi-line list or dictionary, each line is separated by `,` at the end.
+Multi-line lists or dictionaries, separated by `,` at the end of each line.
 
-The IDE can automatically format file for you, you can use `self-lint` to control formatting.
+The IDE can automatically format this step for you:
 
-```arc
+```ini
 name = 'vscode-arc'
 displayName = 'Arc Language Support'
 description = 'Highlight and formatter for Arc Readable Configiration'
@@ -155,37 +155,31 @@ __metadata = {
 
 ---
 
-Then we have to introduce the concept of routing, which greatly simplifies the input.
+Then we have to introduce the concept of **routing**, which can greatly simplify the input
 
-The route is split with `/`, just like the file path.
+Routes are split with `.`.
 
-This is the reason why the key contain `/` must be in string mode.
-
-For why numbers also must use strings, the specific reasons will be revealed in the next section.
-
-```arc
+```ini
 engines = {
   vscode = '^1.8.0',
 }
 ```
 
-which is quivalent to:
+which quivalent to
 
-```arc
-engines/vscode = '^1.8.0'
+```ini
+engines.vscode = '^1.8.0'
 ```
 
-The namespace in a programming language is usually separated by `::` or `.`.
+This is why the key appears in `.` must use string mode.
 
-The reason why `arc` does not use `.` is that this symbol has been used to split decimals. 
-
-In `arc` one symbol only one meaning, whick is convenient for parsing.
+As for why pure numbers are also strings, the specific reasons will be revealed later.
 
 ---
 
-Every route has to be too cumbersome to expand, and then we introduce the concept of the scope.
+It is too cumbersome to expand each route, then introduce the concept of **scope**.
 
-```arc
+```ini
 repository = {
   type = 'git',
   url = 'https://github.com/GalAster/vscode-arc.git',
@@ -196,14 +190,14 @@ categories = [
 ]
 ```
 
-The scope indicates that all keys are mounted on this key until the scope switch or file ends.
+Scope means that it is all mounted on this key until the domain is switched or the file ends
 
-The dictionary field is represented by `( )`, and the list field is represented by `[ ]`.
+The dictionary field is represented by `[ ]`, and the list field is represented by `< >`.
 
 The equivalent is written as follows:
 
-```arc
-(repository)
+```ini
+[repository]
 type = 'git',
 url = 'https://github.com/GalAster/vscode-arc.git',
 <categories>
@@ -211,9 +205,9 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 & 'Formatters'
 ```
 
-The list field uses `&` to insert a value, and `*` to insert multiple keys to form a dictionary.
+The list scope uses `&` to insert a value, and `*` to insert multiple keys to form a dictionary.
 
-```arc
+```ini
 <dependence>
 * name = 'number'
   md5 = '7FF2B2E95569F56D'
@@ -223,7 +217,7 @@ The list field uses `&` to insert a value, and `*` to insert multiple keys to fo
 & null
 ```
 
-which is quivalent to
+which quivalent to
 
 ```ts
 module.exports = [
@@ -243,51 +237,49 @@ module.exports = [
 ]
 ```
 
-Few scenes need to use `*` and `&` both.
+There are very few scenes where you need to mix `*` and `&`.
 
 ---
 
-Then we consider how to rewrite that complex `contributes` field
+Let's consider how to rewrite that big "contributes" field
 
-We introduce the scope inheritance, consider the following structure
+First introduce **scope inheritance**, consider the following structure:
 
-```arc
+```ini
 root = {
   a = {c = true}
   b = {d = false}
 }
 ```
 
-You can write as: 
+You can write as:
 
-```arc
+```ini
 root = {
-  (a) c = true
-  (b) d = false
+  [a] c = true
+  [b] d = false
 }
 ```
 
-or write as: 
+And can also be written as:
 
-```arc
-(root)
-  (/a) c = true
-  (/b) d = false
+```ini
+[root]
+  [.a] c = true
+  [.b] d = false
 ```
 
-It depends on whether you like braces or not, and the indentation here is not necessary.
+It depends on whether you like braces or not, indentation here is not necessary.
 
-Space, indentation, line breaks in `arc` don't have any practical meaning. 
-
-How to typeset is your freedom.
+Spaces, indents, and newlines in `arc` have no practical meaning. How to typeset is your freedom.
 
 ---
 
-Then let's take a look at what is index routing.
+Then we understand what is **index routing**.
 
 Back to this structure:
 
-```arc
+```ini
 contributes = {
   languages = [
     {
@@ -302,34 +294,24 @@ contributes = {
 }
 ```
 
-It seems that it can be written as:
+According to what we learned before, it can be written as:
 
-```arc
-<contributes/languages>
-* id = 'arc',
-  aliases = ['ARC'],
-  extensions = ['.arc'],
-  filenames = [ ],
-  mimetypes = ['text/x-arc'],
-  configuration = './syntax/arc.configuration.json',
-& { % or manually expand
-    id = 'arc',
-    aliases = ['ARC'],
-    extensions = ['.arc'],
-    filenames = [ ],
-    mimetypes = ['text/x-arc'],
-    configuration = './syntax/arc.configuration.json',
-  }
+```ini
+<contributes.languages>
+* id = 'arc'
+  aliases = ['ARC']
+  extensions = ['.arc']
+  filenames = [ ]
+  mimetypes = ['text/x-arc']
+  configuration = './syntax/arc.configuration.json'
 ```
 
-But there is a better way to write, here the dictionary expansion mark `*` can be omitted.
+But there are other ways of writing, here this dictionary expansion tag `*` can be omitted.
 
-Because it is the first element in the list, it can be represented by 1. 
+Because the offset from the header is 0, it can be represented by 0. Here the value is a dictionary, so use `[ ]`.
 
-then it is a dictionary, so use `( )`.
-
-```arc
-(contributes/languages/1)
+```ini
+[contributes.languages.0]
 id = 'arc'
 aliases = ['ARC']
 extensions = ['.arc']
@@ -340,66 +322,58 @@ configuration = './syntax/arc.configuration.json'
 
 ---
 
-The final rewritten file is as follows:
+The final rewritten file is as follows, is it clearer?
 
-```arc
-% https://github.com/GalAster/vscode-arc/blob/master/package.json
+```ini
+# https://github.com/GalAster/vscode-arc/blob/master/package.json
 name = 'vscode-arc'
 displayName = 'Arc Language Support'
 description = 'Highlight and formatter for Arc Readable Configiration'
-engines/vscode = '^1.8.0'
+engines.vscode = '^1.8.0'
 
 <categories>
 & 'Programming Languages'
 & 'Formatters'
 
-(repository)
+[repository]
 type = 'git'
-url = 'https =//github.com/GalAster/vscode-arc.git'
+url = 'https://github.com/GalAster/vscode-arc.git'
 
-(scripts)
+[scripts]
 postinstall = 'node ./node_modules/vscode/bin/install && tsc'
 build = 'yarn lint && ts-node syntax/build.ts'
 pack = 'yarn build && vsce package'
 lint = 'tslint **/*.ts --fix'
 
-(dependencies)
+[dependencies]
 vscode = '^1.1.33'
 
-(devDependencies)
+[devDependencies]
 '@types/node' = '^11.13.6'
 
-(contributes)
-</languages>
+<contributes.languages>
 * id = 'arc'
   aliases = ['ARC'],
   extensions = ['.arc']
-  filenames = []
+  filenames = [ ]
   mimetypes = ['text/x-arc']
   configuration = './syntax/arc.configuration.json'
-</grammars>
-* language = 'arc'
-  scopeName = 'source.arc'
+
+<contributes.grammars>
+* scopeName = 'source.arc'
+  language = 'arc'
   path = './syntax/arc.tmLanguage.json'
 * scopeName = 'markdown.arc.codeblock'
   path = './syntax/arc.markdown.json'
-  injectTo = [
-    'text.html.markdown',
-  ]
-  embeddedLanguages = {
-    'meta.embedded.block.arc' = 'arc',
-  }
+  injectTo = ['text.html.markdown']
+  embeddedLanguages = {'meta.embedded.block.arc' = 'arc'}
 
-(__metadata)
+[__metadata]
 id = '6267dad2-7d52-462a-a1ef-7e3da7378a7d'
 publisherDisplayName = 'Aster'
 publisherId = '3406b78c-f287-4619-8d82-7c97998693e3'
 ```
 
-Note that all non-character space wraps can be removed, further compressed transmission.
+The main points of the `arc` language are all here.
 
-The main elements of the `arc` language are all here.
-
-There is also a reference feature that uses `$` to mark paths, share values like version numbers.
-
-The next step is to familiarize with the using of macros, how to combine the reflection properties of the language, and obtain readable serialization results.
+There is also a reference feature that is not used here, that is, use `$` to mark the path, and share the value such as the version number.
