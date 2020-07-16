@@ -6,7 +6,7 @@
 
 字符类型 character 使用 `` ` ` `` 包围表示:
 
-```js
+```ini
 default = ` `
 char1 = `c`
 ```
@@ -16,7 +16,7 @@ char1 = `c`
 字符串类型 string 使用 `" "` 或者 `' '` 包围表示:
 
 
-```js
+```ini
 default = "";
 str1 = "s"
 str2 = 's'
@@ -47,7 +47,7 @@ str4 = "\""
 多行字符串是字符串的一种, 使用三个或以上 ` ` ` 包围表示:
 
 
-`````js
+`````ini
 ````
 this is a multiline string
 'this is a string inside multiline string'
@@ -61,7 +61,7 @@ this is a multiline string
 
 字符串的注解类型在前方, 可以添加空格或者回车隔开:
 
-```js
+```ini
 raw_text = r" "
 ```
 
@@ -69,16 +69,16 @@ raw_text = r" "
 
 - 不要使用带**空格或回车**的字符/字符串注解
 
-```
-warn1 = r "warning"
+```ini
+warn1 = r"warning"
 warn2 = r
 "warning"
 ```
 
 - 不要使用带**空格**的多行字符串注解
 
-```
-warn1 = r ```warning```
+```ini
+warn1 = r```warning```
 ```
 
 ## deny
@@ -86,6 +86,12 @@ warn1 = r ```warning```
 
 - 禁止空的 character
 
-```js
+```ini
 error = ``
+```
+
+- 禁止非法的转义
+
+```ini
+error = "\a"
 ```
