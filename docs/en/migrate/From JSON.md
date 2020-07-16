@@ -1,9 +1,9 @@
 Starting with JSON
 ==================
 
-ARC can gradually transition from JSON!
+Arc can gradually transition from Json!
 
-Let's take the following example of `json` to see how to enhance readability with `arc`.
+Let's take a **actual json configuration file** as an example, and see how to use `arc` rewriting to enhance readability.
 
 ```json
 {
@@ -74,25 +74,25 @@ Let's take the following example of `json` to see how to enhance readability wit
 }
 ```
 
-First, remove the `{ }` at the beginning and ending, because `arc` must be the form of the key-value pair.
+First, remove the { } at the beginning and ending, because arc must be the form of the key-value pair.
 
-Now the file already a valid `arc` file, but it doesn't look pretty.
+Now the file already a valid arc file, but it doesn't look pretty.
 
 ---
 
 Then you can follow the best practices of `arc` for better readability.
 
-You can remove the quotation marks of all keys, unless they contain `/` characters, or consist of pure numbers.
+你可以把所有键的引号去掉, 除非他们包含 `.` 字符, 或者由纯数字构成.
 
-Single quotes are best practices, but double quotes are also available, single quotes do not escaped, while double quotes support escape.
+Single quotes are the best practice, after all, single quotes don't need to press `Shift`, but double quotes are fine.
 
-Then you can replace the json style `:` with `=`
+然后你可以把 json 风格的 `:` 换成 `=`, 然后去掉键值对末尾的所有 `,`.
 
-Then remove all the `,` at the end of the key-value pair, unless it is a multi-line list or dictionary, each line is separated by `,` at the end.
+多行列表或者字典, 每行末尾使用 `,` 分隔.
 
-The IDE can automatically format file for you, you can use `self-lint` to control formatting.
+IDE 能自动为你格式化到这一步:
 
-```arc
+```ini
 name = 'vscode-arc'
 displayName = 'Arc Language Support'
 description = 'Highlight and formatter for Arc Readable Configiration'
@@ -155,37 +155,31 @@ __metadata = {
 
 ---
 
-Then we have to introduce the concept of routing, which greatly simplifies the input.
+Then we have to introduce the concept of **routing**, which can greatly simplify the input
 
-The route is split with `/`, just like the file path.
+Routes are split with `.`.
 
-This is the reason why the key contain `/` must be in string mode.
-
-For why numbers also must use strings, the specific reasons will be revealed in the next section.
-
-```arc
+```ini
 engines = {
   vscode = '^1.8.0',
 }
 ```
 
-which is quivalent to:
+which quivalent to
 
-```arc
-engines/vscode = '^1.8.0'
+```ini
+engines.vscode = '^1.8.0'
 ```
 
-The namespace in a programming language is usually separated by `::` or `.`.
+这也是为什么 key 出现 `.` 必须用字符串模式的原因.
 
-The reason why `arc` does not use `.` is that this symbol has been used to split decimals. 
-
-In `arc` one symbol only one meaning, whick is convenient for parsing.
+至于为什么纯数字也要字符串, 具体原因后面会揭示.
 
 ---
 
-Every route has to be too cumbersome to expand, and then we introduce the concept of the scope.
+It is too cumbersome to expand each route, then introduce the concept of **scope**.
 
-```arc
+```ini
 repository = {
   type = 'git',
   url = 'https://github.com/GalAster/vscode-arc.git',
@@ -196,14 +190,14 @@ categories = [
 ]
 ```
 
-The scope indicates that all keys are mounted on this key until the scope switch or file ends.
+域表示到域切换或者文件结束为止全部挂载在这个键上
 
-The dictionary field is represented by `( )`, and the list field is represented by `[ ]`.
+字典域用 `[ ]` 表示, 列表域用 `< >` 表示.
 
-The equivalent is written as follows:
+等价的写法为如下:
 
-```arc
-(repository)
+```ini
+[repository]
 type = 'git',
 url = 'https://github.com/GalAster/vscode-arc.git',
 <categories>
@@ -211,9 +205,9 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 & 'Formatters'
 ```
 
-The list field uses `&` to insert a value, and `*` to insert multiple keys to form a dictionary.
+列表域使用 `&` 表示插入一个值, `*`表示插入多个键构成字典.
 
-```arc
+```ini
 <dependence>
 * name = 'number'
   md5 = '7FF2B2E95569F56D'
@@ -223,7 +217,7 @@ The list field uses `&` to insert a value, and `*` to insert multiple keys to fo
 & null
 ```
 
-which is quivalent to
+which quivalent to
 
 ```ts
 module.exports = [
@@ -243,51 +237,49 @@ module.exports = [
 ]
 ```
 
-Few scenes need to use `*` and `&` both.
+一般很少有场景需要混写 `*` 和 `&`.
 
 ---
 
-Then we consider how to rewrite that complex `contributes` field
+我们接着考虑如何改写那个很大的 `contributes` 字段
 
-We introduce the scope inheritance, consider the following structure
+先介绍域继承, 考虑如下构造
 
-```arc
+```ini
 root = {
   a = {c = true}
   b = {d = false}
 }
 ```
 
-You can write as: 
+你可以写成 
 
-```arc
+```ini
 root = {
-  (a) c = true
-  (b) d = false
+  [a] c = true
+  [b] d = false
 }
 ```
 
-or write as: 
+也可以写成
 
-```arc
-(root)
-  (/a) c = true
-  (/b) d = false
+```ini
+[root]
+  [.a] c = true
+  [.b] d = false
 ```
 
-It depends on whether you like braces or not, and the indentation here is not necessary.
+这取决于你喜不喜欢大括号, 这里的缩进都不是必须的.
 
-Space, indentation, line breaks in `arc` don't have any practical meaning. 
-
-How to typeset is your freedom.
+`arc` 中空格, 缩进, 换行没有任何的实际意义如何排版是你的自由.
 
 ---
 
-Then let's take a look at what is index routing.
+接着我们了解一下什么是索引路由.
 
-Back to this structure:
+回到这个结构
 
-```arc
+```ini
 contributes = {
   languages = [
     {
@@ -302,34 +294,24 @@ contributes = {
 }
 ```
 
-It seems that it can be written as:
+按照之前我们学到的, 可以写成:
 
-```arc
-<contributes/languages>
-* id = 'arc',
-  aliases = ['ARC'],
-  extensions = ['.arc'],
-  filenames = [ ],
-  mimetypes = ['text/x-arc'],
-  configuration = './syntax/arc.configuration.json',
-& { % or manually expand
-    id = 'arc',
-    aliases = ['ARC'],
-    extensions = ['.arc'],
-    filenames = [ ],
-    mimetypes = ['text/x-arc'],
-    configuration = './syntax/arc.configuration.json',
-  }
+```ini
+<contributes.languages>
+* id = 'arc'
+  aliases = ['ARC']
+  extensions = ['.arc']
+  filenames = [ ]
+  mimetypes = ['text/x-arc']
+  configuration = './syntax/arc.configuration.json'
 ```
 
-But there is a better way to write, here the dictionary expansion mark `*` can be omitted.
+但还有其他的写法, 这里这个字典展开标记 `*` 可以省略
 
-Because it is the first element in the list, it can be represented by 1. 
+因为与表头的偏移是0, 所以用 0 表示即可, 此处值是字典, 所以用 `[ ]`.
 
-then it is a dictionary, so use `( )`.
-
-```arc
-(contributes/languages/1)
+```ini
+[contributes.languages.1]
 id = 'arc'
 aliases = ['ARC']
 extensions = ['.arc']
@@ -340,66 +322,58 @@ configuration = './syntax/arc.configuration.json'
 
 ---
 
-The final rewritten file is as follows:
+最终改写的文件如下, 看看这样子是不是清晰了许多?
 
-```arc
-% https://github.com/GalAster/vscode-arc/blob/master/package.json
+```ini
+# https://github.com/GalAster/vscode-arc/blob/master/package.json
 name = 'vscode-arc'
 displayName = 'Arc Language Support'
 description = 'Highlight and formatter for Arc Readable Configiration'
-engines/vscode = '^1.8.0'
+engines.vscode = '^1.8.0'
 
 <categories>
 & 'Programming Languages'
 & 'Formatters'
 
-(repository)
+[repository]
 type = 'git'
-url = 'https =//github.com/GalAster/vscode-arc.git'
+url = 'https://github.com/GalAster/vscode-arc.git'
 
-(scripts)
+[scripts]
 postinstall = 'node ./node_modules/vscode/bin/install && tsc'
 build = 'yarn lint && ts-node syntax/build.ts'
 pack = 'yarn build && vsce package'
 lint = 'tslint **/*.ts --fix'
 
-(dependencies)
+[dependencies]
 vscode = '^1.1.33'
 
-(devDependencies)
+[devDependencies]
 '@types/node' = '^11.13.6'
 
-(contributes)
-</languages>
+<contributes.languages>
 * id = 'arc'
   aliases = ['ARC'],
   extensions = ['.arc']
-  filenames = []
+  filenames = [ ]
   mimetypes = ['text/x-arc']
   configuration = './syntax/arc.configuration.json'
-</grammars>
-* language = 'arc'
-  scopeName = 'source.arc'
+
+<contributes.grammars>
+* scopeName = 'source.arc'
+  language = 'arc'
   path = './syntax/arc.tmLanguage.json'
 * scopeName = 'markdown.arc.codeblock'
   path = './syntax/arc.markdown.json'
-  injectTo = [
-    'text.html.markdown',
-  ]
-  embeddedLanguages = {
-    'meta.embedded.block.arc' = 'arc',
-  }
+  injectTo = ['text.html.markdown']
+  embeddedLanguages = {'meta.embedded.block.arc' = 'arc'}
 
-(__metadata)
+[__metadata]
 id = '6267dad2-7d52-462a-a1ef-7e3da7378a7d'
 publisherDisplayName = 'Aster'
 publisherId = '3406b78c-f287-4619-8d82-7c97998693e3'
 ```
 
-Note that all non-character space wraps can be removed, further compressed transmission.
+The main points of the `arc` language are all here.
 
-The main elements of the `arc` language are all here.
-
-There is also a reference feature that uses `$` to mark paths, share values like version numbers.
-
-The next step is to familiarize with the using of macros, how to combine the reflection properties of the language, and obtain readable serialization results.
+There is also a reference feature that is not used here, that is, use `$` to mark the path, and share the value such as the version number.
