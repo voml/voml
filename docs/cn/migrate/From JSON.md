@@ -332,8 +332,8 @@ description = 'Highlight and formatter for Arc Readable Configiration'
 engines.vscode = '^1.8.0'
 
 <categories>
-* 'Programming Languages'
-* 'Formatters'
+& 'Programming Languages'
+& 'Formatters'
 
 [repository]
 type = 'git'
@@ -352,7 +352,7 @@ vscode = '^1.1.33'
 '@types/node' = '^11.13.6'
 
 <contributes.languages>
-^ id = 'arc'
+* id = 'arc'
   aliases = ['ARC'],
   extensions = ['.arc']
   filenames = [ ]
@@ -360,10 +360,10 @@ vscode = '^1.1.33'
   configuration = './syntax/arc.configuration.json'
 
 <contributes.grammars>
-^ scopeName = 'source.arc'
+* scopeName = 'source.arc'
   language = 'arc'
   path = './syntax/arc.tmLanguage.json'
-^ scopeName = 'markdown.arc.codeblock'
+* scopeName = 'markdown.arc.codeblock'
   path = './syntax/arc.markdown.json'
   injectTo = ['text.html.markdown']
   embeddedLanguages = {'meta.embedded.block.arc' = 'arc'}
