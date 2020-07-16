@@ -9,12 +9,11 @@ RFC9999: Inheritance of Dict Scope
 
 简化超长超深路径的输入
 
-
 ## Design
 
 ### Simple Inheritance
 
-在开头使用 `.`, 表示继承父级的名称
+在开头使用 `.`, 表示继承父级的路由
 
 ```ini
 [root]
@@ -22,11 +21,8 @@ RFC9999: Inheritance of Dict Scope
   v = true
   <.list>
   & null
-```
 
-等价于
-
-```ini
+# which equivalent to:
 [root.dict]
 v = true
 <root.list>
@@ -46,7 +42,7 @@ module.exports = {
 
 ### Nest Inheritance
 
-当有多个 `.` 起始时, 
+当有多个 `.` 起始时, 表示继承次一级的域
 
 ```ini
 [root]
@@ -54,11 +50,8 @@ module.exports = {
   v = true
     <..list>
     & null
-```
 
-等价于
-
-```ini
+# which equivalent to:
 [root.dict]
 v = true
 <root.dict.list>
@@ -78,21 +71,24 @@ module.exports = {
 }
 ```
 
-### Prohibited Matters
+## Irregular Matters
 
-Inherit Scope 不能是空的, 考虑如下构造
+### Empty inheritance field
+
+继承域不能是空的, 考虑如下构造
 
 ```ini
+# warning!
 [a]
   <.b>
   c = 1
 ```
 
-若允许空, `<.b>` 发现没有匹配于是变成空列表, 下面的 `c = 1` 挂载在 `[a]` 下就不会报错.
+`<.b>` 发现没有匹配于是变成空列表, 下面的 `c = 1` 挂载在 `[a]` 下.
 
 解析结果如下, 这不符合直观感受.
 
-```ts
+```js
 module.exports = {
     a: {
         b: [ ],
@@ -101,13 +97,14 @@ module.exports = {
 }
 ```
 
-禁止继承空声明以后报错, 要求添加 `&`
-
 ---
 
-非法继承
+### Illegal inheritance
+
+继承必须逐级增加, 越级继承是非法的, 应该报错
 
 ```ini
+# error!
 [a]
   [..b]
   c = 1
