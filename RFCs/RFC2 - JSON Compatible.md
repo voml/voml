@@ -15,7 +15,7 @@ ARC 必须被解析为 Hashmap, 所以最小化改动就是去掉首尾的 `{ }`
 
 ### Related
 
-- [#RFC31](RFC31%20-%20Import%20Statement.md): 允许直接导入一个 json 文件.
+- [#RFC31](RFC6%20-%20Import%20Statement.md): 允许直接导入一个 json 文件.
 
 ## Design
 
