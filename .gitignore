@@ -10,9 +10,10 @@ target/
 
 # Node
 node_modules/
+package-lock.json
+.yarn/
 yarn.lock
 yarn-error.log
-package-lock.json
 docs/.build/
 
 # Build

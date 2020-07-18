@@ -1,22 +1,18 @@
-# String
-
-## allow
-
-### character
+## Character
 
 字符类型 character 使用 `` ` ` `` 包围表示:
 
-```ini
+```toml
 default = ` `
 char1 = `c`
 ```
 
-### string
+## String
 
 字符串类型 string 使用 `" "` 或者 `' '` 包围表示:
 
 
-```ini
+```toml
 default = "";
 str1 = "s"
 str2 = 's'
@@ -42,12 +38,12 @@ str4 = "\""
 | `\f` | 换页符      |
 
 
-### multiline string
+## Multiline String
 
 多行字符串是字符串的一种, 使用三个或以上 ` ` ` 包围表示:
 
 
-`````ini
+`````toml
 ````
 this is a multiline string
 'this is a string inside multiline string'
@@ -57,11 +53,11 @@ this is a multiline string
 `````
 
 
-### typed string
+## Typed String
 
 字符串的注解类型在前方, 可以添加空格或者回车隔开:
 
-```ini
+```toml
 raw_text = r" "
 ```
 
@@ -69,7 +65,7 @@ raw_text = r" "
 
 - 不要使用带**空格或回车**的字符/字符串注解
 
-```ini
+```toml
 warn1 = r"warning"
 warn2 = r
 "warning"
@@ -77,7 +73,7 @@ warn2 = r
 
 - 不要使用带**空格**的多行字符串注解
 
-```ini
+```toml
 warn1 = r```warning```
 ```
 
@@ -86,12 +82,12 @@ warn1 = r```warning```
 
 - 禁止空的 character
 
-```ini
+```toml
 error = ``
 ```
 
 - 禁止非法的转义
 
-```ini
+```toml
 error = "\a"
 ```
