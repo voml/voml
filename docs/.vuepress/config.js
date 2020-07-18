@@ -27,7 +27,7 @@ const locale_cn = {
                 children: [
                     ['advance/', '进阶用法'],
                     ['advance/macros', '宏'],
-                    ['advance/history', '进阶用法'],
+                    ['advance/history', '更新历史'],
                 ]
             },
             {
@@ -58,11 +58,18 @@ const locale_en = {
     sidebar: {
         "/en/": [
             {
-                title: 'Appendix',
-                collapsable: true,
+                title: 'Tutorials',
+                collapsable: false,
                 children: [
-                    ['migrate/From JSON', 'Appendix A'],
-                    ['migrate/From TOML', 'Appendix A'],
+                    ['basic/', 'Basic Concepts'],
+                ]
+            },
+            {
+                title: '迁移',
+                collapsable: false,
+                children: [
+                    ['migrate/From JSON', 'From JSON'],
+                    ['migrate/From TOML', 'From TOML'],
                 ]
             },
         ]
