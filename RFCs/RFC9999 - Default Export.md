@@ -10,7 +10,7 @@ RFC6: Default Export
 
 ## Related
 
-- [#RFC1](RFC1%20-%20JSON%20Compatible.md): 提升 json 兼容性
+- [#RFC1](RFC2%20-%20JSON%20Compatible.md): 提升 json 兼容性
 
 ## Design
 
