@@ -49,7 +49,7 @@ list2 = ("a", "b", "c")
 
 
 
-[#1]: ./RFC1%20-%20JSON%20Compatible.md
+[#1]: RFC2%20-%20JSON%20Compatible.md
 [#5]: ./RFC5%20-%20Inherit%20Scope.md
 [#23]: ./RFC23%20-%201st%20Amendment%20on%20RFC4.md
 [#24]: ./RFC24%20-%202nd%20Amendment%20on%20RFC4.md
