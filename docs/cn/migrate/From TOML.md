@@ -54,7 +54,7 @@ md5 = '84DD3D20D928BEE8'
 
 上述 TOML 如果非要找 ARC 的等价操作的话, 那就要写成:
 
-```arc
+```toml
 (dependence/1)
 name = 'number'
 md5 = '7FF2B2E95569F56D'
@@ -67,7 +67,7 @@ md5 = '84DD3D20D928BEE8'
 
 实际上一般不建议这么写, 正常的写法是:
 
-```arc
+```toml
 <dependence>
 * name = 'number'
   md5 = '7FF2B2E95569F56D'

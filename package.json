@@ -13,7 +13,7 @@
         "deploy": "vuepress build docs"
     },
     "dependencies": {
-        "vuepress": "^1.4.0"
-    },
-    "devDependencies": {}
+        "vuepress": "^1.5.2",
+        "vuepress-plugin-shiki": "^0.1.7"
+    }
 }

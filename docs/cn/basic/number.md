@@ -1,22 +1,16 @@
-# Number
-
-
-## allow
-
-
-### integer
+## Integer
 
 整数默认是大整数类型
 
 可以带正负号, 可以带下划线
 
-### typed integer
+## Typed Integer
 
 整数的注解在数字后方
 
 数字与注解之间不能带空格也不能带回车
 
-```
+```toml
 default = 0
 int1 =+99
 int2 = 42
@@ -25,36 +19,36 @@ int4 =-17
 int7 = 1_2_3_4_5
 ```
 
-### decimal
+## Decimal
 
 小数默认是高精度小数类型
 
 
-### typed decimal
+## Typed Decimal
 
 小数的类型注解在数字后方
 
-```js
+```toml
 0.1f32
 ```
 
-### bytes
+## Bytes
 
 字节数
 
 不能使用下划线
 
-```
+```toml
 0x0
 0o0
 0f0
 ```
 
-### typed bytes
+## Typed Bytes
 
 
 
-```
+```toml
 0x001_i32
 ```
 
@@ -63,13 +57,13 @@ int7 = 1_2_3_4_5
 
 - 不要使用多重下划线
 
-```bash
+```toml
 1__2
 ```
 
 - 不要使用多重前导零
 
-```bash
+```toml
 0000
 0001
 00.2
@@ -77,14 +71,14 @@ int7 = 1_2_3_4_5
 
 - 不要使用大小写混用的比特输入
 
-```bash
+```toml
 0xFfF
 ```
 
 
 
 
-## deny
+## error
 
 - 禁止残缺小数
 

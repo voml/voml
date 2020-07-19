@@ -24,7 +24,7 @@ service_b: {
 
 不过副作用看来很难处理, 总是会留下一些尸体.
 
-```arc
+```toml
 % return dict
 lint = @order`include ./lint.arc` 
 % return nothing
