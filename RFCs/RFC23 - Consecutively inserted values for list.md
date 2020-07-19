@@ -27,7 +27,7 @@ group: '&' data+ # DataGroup ;
 
 原来每一项都要写出 `&`
 
-```arc
+```toml
 <fruits>
 * class = 3
   sales = 128
@@ -38,7 +38,7 @@ group: '&' data+ # DataGroup ;
 
 现在只需要写一个 `&` 表示模式切换
 
-```arc
+```toml
 <fruits>
 * class = 3
   sales = 128

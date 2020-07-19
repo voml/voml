@@ -29,7 +29,7 @@ group: '&'? data+ # DataGroup ;
 
 原写法
 
-```arc
+```toml
 <fruits>& 
 "Apple"
 "Banana"
@@ -42,7 +42,7 @@ group: '&'? data+ # DataGroup ;
 
 新写法
 
-```arc
+```toml
 <fruits>
 "Apple"
 "Banana"
@@ -58,7 +58,7 @@ group: '&'? data+ # DataGroup ;
 
 出现非法预期, 考虑如下构造:
 
-```arc
+```toml
 <a>
   [1,2,3]
   [4,5,6]

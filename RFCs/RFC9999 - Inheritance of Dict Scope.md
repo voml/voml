@@ -15,7 +15,7 @@ RFC9999: Inheritance of Dict Scope
 
 在开头使用 `.`, 表示继承父级的路由
 
-```ini
+```toml
 [root]
   [.dict]
   v = true
@@ -44,7 +44,7 @@ module.exports = {
 
 当有多个 `.` 起始时, 表示继承次一级的域
 
-```ini
+```toml
 [root]
   [.dict]
   v = true
@@ -77,7 +77,7 @@ module.exports = {
 
 继承域不能是空的, 考虑如下构造
 
-```ini
+```toml
 # warning!
 [a]
   <.b>
@@ -103,7 +103,7 @@ module.exports = {
 
 继承必须逐级增加, 越级继承是非法的, 应该报错
 
-```ini
+```toml
 # error!
 [a]
   [..b]
