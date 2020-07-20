@@ -38,7 +38,7 @@ RFC8: Style Guide for Arc
 
 开启时, 分行情况下, 最后一个元素会加上 EOS
 
-```arc
+```toml
 % - @list-eos = ","
 % - @list-end = true
 a = [2, 3, 5, 7]
