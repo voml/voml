@@ -25,6 +25,7 @@ key = {
 ```toml
 case1 = {one = 1;}
 case2 = ("string",)
+```
 
 ## error
 
