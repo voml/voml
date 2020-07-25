@@ -6,6 +6,8 @@ Arc Readable Configuration
 
 ## How to Start [![Netlify Status](https://api.netlify.com/api/v1/badges/fbb30971-c014-4c7e-b268-40540b200a3c/deploy-status)](https://app.netlify.com/sites/arc-lang/deploys)
 
+See ![arc-lang.org](https://arc-lang.netlify.app/) for details.
+
 Try vscode support: [VScode - ARC](https://github.com/GalAster/vscode-arc/tree/master)
 
 Following [json migration tutorial](https://github.com/Moe-Net/Arc-Language/blob/master/i18n/en/From%20JSON.md).
