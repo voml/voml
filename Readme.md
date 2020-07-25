@@ -4,9 +4,9 @@ Arc Readable Configuration
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![LICENSE](https://img.shields.io/badge/license-MPL%202.0-blue.svg?style=flat-square)](https://github.com/GalAster/vscode-toml/blob/master/License.md)
 
-## How to Start [![Netlify Status](https://api.netlify.com/api/v1/badges/fbb30971-c014-4c7e-b268-40540b200a3c/deploy-status)](https://app.netlify.com/sites/arc-lang/deploys)
+## How to Start 
 
-See ![arc-lang.org](https://arc-lang.netlify.app/) for details.
+See [arc-lang.org](https://arc-lang.netlify.app/) for details. [![Netlify Status](https://api.netlify.com/api/v1/badges/fbb30971-c014-4c7e-b268-40540b200a3c/deploy-status)](https://app.netlify.com/sites/arc-lang/deploys) 
 
 Try vscode support: [VScode - ARC](https://github.com/GalAster/vscode-arc/tree/master)
 
