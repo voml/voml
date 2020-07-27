@@ -28,6 +28,7 @@ const locale_cn = {
                     ['advance/', '进阶用法'],
                     ['advance/macros', '宏'],
                     ['advance/other', '非法输入'],
+                    ['advance/features', '可能的新特性'],
                     ['advance/history', '更新历史'],
                 ]
             },
@@ -92,7 +93,7 @@ module.exports = {
         }
     },
     head: [
-        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }]
+        ['link', {rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png'}]
     ],
     themeConfig: {
         repo: 'nyar-lang/arc-language',
@@ -111,7 +112,10 @@ module.exports = {
         config: md => {
         }
     },
-    plugins: {
-        shiki: { theme: 'monokai' } 
-    }
+    plugins: [
+        [
+            'shiki',
+            {theme: 'monokai'}
+        ],
+    ],
 };

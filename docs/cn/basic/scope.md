@@ -7,8 +7,6 @@ allow
 
 scope 等价于 key, key 不能添加类型注解, 只有 value 才有类型注解.
 
-<a>
-
 ### dict 
 
 
