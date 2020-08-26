@@ -92,7 +92,7 @@ Arc 可以渐进的从 Json 过渡!
 
 IDE 能自动为你格式化到这一步:
 
-```toml
+```arc
 name = 'vscode-arc'
 displayName = 'Arc Language Support'
 description = 'Highlight and formatter for Arc Readable Configiration'
@@ -159,7 +159,7 @@ __metadata = {
 
 路由用 `.` 分割.
 
-```toml
+```arc
 engines = {
   vscode = '^1.8.0',
 }
@@ -167,7 +167,7 @@ engines = {
 
 等价于 
 
-```toml
+```arc
 engines.vscode = '^1.8.0'
 ```
 
@@ -179,7 +179,7 @@ engines.vscode = '^1.8.0'
 
 每个路由都要展开太过烦琐了, 接下来引入域的概念.
 
-```toml
+```arc
 repository = {
   type = 'git',
   url = 'https://github.com/GalAster/vscode-arc.git',
@@ -196,7 +196,7 @@ categories = [
 
 等价的写法为如下:
 
-```toml
+```arc
 [repository]
 type = 'git',
 url = 'https://github.com/GalAster/vscode-arc.git',
@@ -207,7 +207,7 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 
 列表域使用 `&` 表示插入一个值, `*`表示插入多个键构成字典.
 
-```toml
+```arc
 <dependence>
 * name = 'number'
   md5 = '7FF2B2E95569F56D'
@@ -245,7 +245,7 @@ module.exports = [
 
 先介绍域继承, 考虑如下构造:
 
-```toml
+```arc
 root = {
   a = {c = true}
   b = {d = false}
@@ -254,7 +254,7 @@ root = {
 
 你可以写成 
 
-```toml
+```arc
 root = {
   [a] c = true
   [b] d = false
@@ -263,7 +263,7 @@ root = {
 
 也可以写成
 
-```toml
+```arc
 [root]
   [.a] c = true
   [.b] d = false
@@ -279,7 +279,7 @@ root = {
 
 回到这个结构
 
-```toml
+```arc
 contributes = {
   languages = [
     {
@@ -296,7 +296,7 @@ contributes = {
 
 按照之前我们学到的, 可以写成:
 
-```toml
+```arc
 <contributes.languages>
 * id = 'arc'
   aliases = ['ARC']
@@ -310,7 +310,7 @@ contributes = {
 
 因为与表头的偏移是0, 所以用 0 表示即可, 此处值是字典, 所以用 `[ ]`.
 
-```toml
+```arc
 [contributes.languages.0]
 id = 'arc'
 aliases = ['ARC']
@@ -324,7 +324,7 @@ configuration = './syntax/arc.configuration.json'
 
 最终改写的文件如下, 看看这样子是不是清晰了许多?
 
-```toml
+```arc
 # https://github.com/GalAster/vscode-arc/blob/master/package.json
 name = 'vscode-arc'
 displayName = 'Arc Language Support'

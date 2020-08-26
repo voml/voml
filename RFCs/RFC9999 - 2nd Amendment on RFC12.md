@@ -35,7 +35,7 @@ macro: At apply = Identifier value = string # SimpleMacro;
 
 考虑如下可能歧义, 均能正确解析:
 
-```toml
+```arc
 (t1)
 key = @macro
 "value" = 1
@@ -93,13 +93,13 @@ module.exports = {
 
 可以进一步推广到键的左边
 
-```toml
+```arc
 address = @ip'192.168.0.1'
 ```
 
 等价于 
 
-```toml
+```arc
 address@ip = '192.168.0.1'
 ```
 

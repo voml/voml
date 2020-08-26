@@ -6,13 +6,13 @@ Other irregularities
 
 - Root EOS
 
-```toml
+```arc
 key = 1;
 ```
 
 - 不一致的 EOS
 
-```toml
+```arc
 key = {
   one = 1;
   two = 2,
@@ -22,7 +22,7 @@ key = {
 
 - inline 时多余的 EOS
 
-```toml
+```arc
 case1 = {one = 1;}
 case2 = ("string",)
 ```
@@ -31,7 +31,7 @@ case2 = ("string",)
 
 - 多重 EOS
 
-```toml
+```arc
 key = 1;;
 ```
 

@@ -19,7 +19,7 @@ RFC26 - Numerical Macros
 
 数字间的下划线是允许的（但不能存在于前缀和值之间）。
 
-```toml
+```arc
 hex1 = @h`DEADBEEF`  % @h 表示十六进制
 hex2 = @h`deadbeef`  % 大小写是无关的
 hex3 = @h`dead_beef` % 同样可以使用下划线

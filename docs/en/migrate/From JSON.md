@@ -92,7 +92,7 @@ Multi-line lists or dictionaries, separated by `,` at the end of each line.
 
 The IDE can automatically format this step for you:
 
-```toml
+```arc
 name = 'vscode-arc'
 displayName = 'Arc Language Support'
 description = 'Highlight and formatter for Arc Readable Configiration'
@@ -159,7 +159,7 @@ Then we have to introduce the concept of **routing**, which can greatly simplify
 
 Routes are split with `.`.
 
-```toml
+```arc
 engines = {
   vscode = '^1.8.0',
 }
@@ -167,7 +167,7 @@ engines = {
 
 which quivalent to
 
-```toml
+```arc
 engines.vscode = '^1.8.0'
 ```
 
@@ -179,7 +179,7 @@ As for why pure numbers are also strings, the specific reasons will be revealed 
 
 It is too cumbersome to expand each route, then introduce the concept of **scope**.
 
-```toml
+```arc
 repository = {
   type = 'git',
   url = 'https://github.com/GalAster/vscode-arc.git',
@@ -196,7 +196,7 @@ The dictionary field is represented by `[ ]`, and the list field is represented 
 
 The equivalent is written as follows:
 
-```toml
+```arc
 [repository]
 type = 'git',
 url = 'https://github.com/GalAster/vscode-arc.git',
@@ -207,7 +207,7 @@ url = 'https://github.com/GalAster/vscode-arc.git',
 
 The list scope uses `&` to insert a value, and `*` to insert multiple keys to form a dictionary.
 
-```toml
+```arc
 <dependence>
 * name = 'number'
   md5 = '7FF2B2E95569F56D'
@@ -245,7 +245,7 @@ Let's consider how to rewrite that big "contributes" field
 
 First introduce **scope inheritance**, consider the following structure:
 
-```toml
+```arc
 root = {
   a = {c = true}
   b = {d = false}
@@ -254,7 +254,7 @@ root = {
 
 You can write as:
 
-```toml
+```arc
 root = {
   [a] c = true
   [b] d = false
@@ -263,7 +263,7 @@ root = {
 
 And can also be written as:
 
-```toml
+```arc
 [root]
   [.a] c = true
   [.b] d = false
@@ -279,7 +279,7 @@ Then we understand what is **index routing**.
 
 Back to this structure:
 
-```toml
+```arc
 contributes = {
   languages = [
     {
@@ -296,7 +296,7 @@ contributes = {
 
 According to what we learned before, it can be written as:
 
-```toml
+```arc
 <contributes.languages>
 * id = 'arc'
   aliases = ['ARC']
@@ -310,7 +310,7 @@ But there are other ways of writing, here this dictionary expansion tag `*` can 
 
 Because the offset from the header is 0, it can be represented by 0. Here the value is a dictionary, so use `[ ]`.
 
-```toml
+```arc
 [contributes.languages.0]
 id = 'arc'
 aliases = ['ARC']
@@ -324,7 +324,7 @@ configuration = './syntax/arc.configuration.json'
 
 The final rewritten file is as follows, is it clearer?
 
-```toml
+```arc
 # https://github.com/GalAster/vscode-arc/blob/master/package.json
 name = 'vscode-arc'
 displayName = 'Arc Language Support'

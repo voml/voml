@@ -1,3 +1,5 @@
+let path = require("path")
+
 const locale_cn = {
     selectText: '选择语言',
     label: '简体中文',
@@ -93,7 +95,7 @@ module.exports = {
         }
     },
     head: [
-        ['link', {rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png'}]
+        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }]
     ],
     themeConfig: {
         repo: 'nyar-lang/arc-language',
@@ -115,7 +117,17 @@ module.exports = {
     plugins: [
         [
             'shiki',
-            {theme: 'monokai'}
+            {
+                theme: 'monokai',
+                langs: [
+                    {
+                        id: 'arc',
+                        scopeName: 'source.arc',
+                        path: path.resolve(__dirname, 'public/arc.tmLanguage.json'),
+                        aliases: []
+                    }
+                ]
+            }
         ],
     ],
 };
