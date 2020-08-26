@@ -2,7 +2,7 @@
 
 字符类型 character 使用 `` ` ` `` 包围表示:
 
-```toml
+```arc
 default = ` `
 char1 = `c`
 ```
@@ -12,7 +12,7 @@ char1 = `c`
 字符串类型 string 使用 `" "` 或者 `' '` 包围表示:
 
 
-```toml
+```arc
 default = "";
 str1 = "s"
 str2 = 's'
@@ -43,7 +43,7 @@ str4 = "\""
 多行字符串是字符串的一种, 使用三个或以上 ` ` ` 包围表示:
 
 
-`````toml
+`````arc
 ````
 this is a multiline string
 'this is a string inside multiline string'
@@ -57,7 +57,7 @@ this is a multiline string
 
 字符串的注解类型在前方, 可以添加空格或者回车隔开:
 
-```toml
+```arc
 raw_text = r" "
 ```
 
@@ -65,7 +65,7 @@ raw_text = r" "
 
 - 不要使用带**空格或回车**的字符/字符串注解
 
-```toml
+```arc
 warn1 = r"warning"
 warn2 = r
 "warning"
@@ -73,7 +73,7 @@ warn2 = r
 
 - 不要使用带**空格**的多行字符串注解
 
-```toml
+```arc
 warn1 = r```warning```
 ```
 
@@ -82,12 +82,12 @@ warn1 = r```warning```
 
 - 禁止空的 character
 
-```toml
+```arc
 error = ``
 ```
 
 - 禁止非法的转义
 
-```toml
+```arc
 error = "\a"
 ```

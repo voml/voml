@@ -1,7 +1,7 @@
 
 ### 字典引用继承
 
-```toml
+```arc
 raw = {a = 1}
 new = $raw {
     b = 2,
@@ -15,7 +15,7 @@ new_raw = {
 
 ### 列表引用继承
 
-```toml
+```arc
 raw = [1, 2, 3]
 new = $raw [4, 5, 6]
 

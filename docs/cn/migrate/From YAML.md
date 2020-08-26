@@ -91,7 +91,7 @@ ARC 中你只要直接粘贴就行, 顶多在域前面多加一个 `/` 符号表
 
 虽然建议写成:
 
-```toml
+```arc
 a = true
 (scope)
 b = "value"
@@ -100,7 +100,7 @@ c = 0
 
 但你就算写成下面这样也没关系:
 
-```toml
+```arc
 a=true(scope)b="value"c=0
 ```
 

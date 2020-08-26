@@ -22,14 +22,14 @@ empty: eos # EmptyStatement;
 
 不允许在 Scope 后使用 `EOS`
 
-```toml
+```arc
 (dict/scope);  % ❌
 <list/scope>,  % ❌
 ```
 
 禁止 `&` 列举使用 EOS
 
-```toml
+```arc
 <matrix>
 & [1, 2, 3],  % ❌
 & [4, 5, 6];  % ❌
@@ -38,7 +38,7 @@ empty: eos # EmptyStatement;
 
 只有键值对能使用 EOS.
 
-```toml
+```arc
 a: 1,      % ✔️
 b: [ ],    % ✔️
 c: { },    % ✔️
@@ -47,7 +47,7 @@ d: "json"  % ✔️
 
 允许 `*` 列举使用 EOS
 
-```toml
+```arc
 <servers>
 * ip = "192.168.0.1",   % ✔️
   pw = "hello";         % ✔️

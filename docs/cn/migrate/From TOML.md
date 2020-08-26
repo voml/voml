@@ -43,7 +43,7 @@ TOML 可以多次使用 `[[ path ]]` 来向列表中添加元素.
 
 ARC 默认不可以多次声明同一个键, 除非 `--safe-key=false`.
 
-```toml
+```arc
 [[package]]
 name = 'number'
 md5 = '7FF2B2E95569F56D'
@@ -54,7 +54,7 @@ md5 = '84DD3D20D928BEE8'
 
 上述 TOML 如果非要找 ARC 的等价操作的话, 那就要写成:
 
-```toml
+```arc
 (dependence/1)
 name = 'number'
 md5 = '7FF2B2E95569F56D'
@@ -67,7 +67,7 @@ md5 = '84DD3D20D928BEE8'
 
 实际上一般不建议这么写, 正常的写法是:
 
-```toml
+```arc
 <dependence>
 * name = 'number'
   md5 = '7FF2B2E95569F56D'

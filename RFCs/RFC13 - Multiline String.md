@@ -10,7 +10,7 @@ Arc 中有两种字符串
 **基本字符串**（Basic strings）由引号包裹。  
 任何 Unicode 字符都可以使用，除了那些必须转义的：引号，反斜杠，以及控制字符（U+0000 至 U+001F，U+007F）。
 
-```toml
+```arc
 str = "我是一个字符串。\"你可以把我引起来\"。姓名\tJos\u00E9\n位置\t旧金山。"
 ```
 
@@ -40,7 +40,7 @@ TOML 对此进行了简化。
 紧随开头引号的那个换行会被去除。  
 其它空白和换行符会被原样保留。
 
-```toml
+```arc
 str1 = """
 Roses are red
 Violets are blue"""
@@ -48,7 +48,7 @@ Violets are blue"""
 
 TOML 解析器可以相对灵活地解析成对所在平台有效的换行字符。
 
-```toml
+```arc
 # 在 Unix 系统，上面的多行字符串可能等同于：
 str2 = "Roses are red\nViolets are blue"
 
@@ -60,7 +60,7 @@ str3 = "Roses are red\r\nViolets are blue"
 当一行的最后一个非空白字符是 `\` 时，它会连同它后面的所有空白（包括换行）一起被去除，直到下一个非空白字符或结束引号为止。  
 所有对基本字符串有效的转义序列，对多行基本字符串也同样适用。
 
-```toml
+```arc
 # 下列字符串的每一个字节都完全相同：
 str1 = "The quick brown fox jumps over the lazy dog."
 
@@ -87,7 +87,7 @@ str3 = """\
 **字面量字符串**（Literal strings）由单引号包裹。  
 类似于基本字符串，他们只能表现为单行：
 
-```toml
+```arc
 # 所见即所得。
 winpath  = 'C:\Users\nodejs\templates'
 winpath2 = '\\ServerX\admin$\system32\'
@@ -103,7 +103,7 @@ regex    = '<\i\c*\s*>'
 紧随开始标记的那个换行会被剔除。  
 开始结束标记之间的所有其它内容会原样对待。
 
-```toml
+```arc
 regex2 = '''I [dw]on't need \d{2} apples'''
 lines  = '''
 原始字符串中的
